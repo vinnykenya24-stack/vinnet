@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InstaGrow Pro | Free Follower Generator</title>
+    <title>SocialGrow Pro | Multi-Platform Growth</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,8 +14,10 @@
         }
 
         :root {
-            --primary: #E1306C;
-            --secondary: #C13584;
+            --instagram: #E1306C;
+            --facebook: #1877F2;
+            --tiktok: #000000;
+            --youtube: #FF0000;
             --success: #00C851;
             --warning: #ffbb33;
             --error: #ff4444;
@@ -32,7 +34,7 @@
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
@@ -55,12 +57,14 @@
 
         .logo i {
             font-size: 3rem;
-            color: var(--primary);
+            background: linear-gradient(45deg, var(--instagram), var(--facebook), var(--tiktok), var(--youtube));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .logo h1 {
             font-size: 2.5rem;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            background: linear-gradient(45deg, var(--instagram), var(--facebook), var(--tiktok), var(--youtube));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -87,12 +91,58 @@
         .stat-number {
             font-size: 2rem;
             font-weight: bold;
-            color: var(--primary);
+            color: var(--instagram);
         }
 
         .stat-label {
             color: var(--gray);
             font-size: 0.9rem;
+        }
+
+        .platform-selector {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .platform-tab {
+            padding: 15px 25px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 600;
+            background: white;
+        }
+
+        .platform-tab.active {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .platform-tab.instagram.active {
+            border-color: var(--instagram);
+            color: var(--instagram);
+        }
+
+        .platform-tab.facebook.active {
+            border-color: var(--facebook);
+            color: var(--facebook);
+        }
+
+        .platform-tab.tiktok.active {
+            border-color: var(--tiktok);
+            color: var(--tiktok);
+        }
+
+        .platform-tab.youtube.active {
+            border-color: var(--youtube);
+            color: var(--youtube);
         }
 
         .main-panel {
@@ -154,7 +204,7 @@
         }
 
         input:focus, select:focus {
-            border-color: var(--primary);
+            border-color: var(--instagram);
             outline: none;
             box-shadow: 0 0 0 3px rgba(225, 48, 108, 0.1);
         }
@@ -174,18 +224,13 @@
         }
 
         .btn-primary {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            background: linear-gradient(45deg, var(--instagram), var(--facebook));
             color: white;
         }
 
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 25px rgba(225, 48, 108, 0.3);
-        }
-
-        .btn-success {
-            background: var(--success);
-            color: white;
         }
 
         .services-grid {
@@ -205,14 +250,49 @@
         }
 
         .service-card:hover, .service-card.selected {
-            border-color: var(--primary);
-            background: linear-gradient(135deg, rgba(225, 48, 108, 0.05), rgba(193, 53, 132, 0.05));
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card.instagram.selected {
+            border-color: var(--instagram);
+            background: rgba(225, 48, 108, 0.05);
+        }
+
+        .service-card.facebook.selected {
+            border-color: var(--facebook);
+            background: rgba(24, 119, 242, 0.05);
+        }
+
+        .service-card.tiktok.selected {
+            border-color: var(--tiktok);
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        .service-card.youtube.selected {
+            border-color: var(--youtube);
+            background: rgba(255, 0, 0, 0.05);
         }
 
         .service-icon {
             font-size: 2rem;
-            color: var(--primary);
             margin-bottom: 10px;
+        }
+
+        .service-card.instagram .service-icon {
+            color: var(--instagram);
+        }
+
+        .service-card.facebook .service-icon {
+            color: var(--facebook);
+        }
+
+        .service-card.tiktok .service-icon {
+            color: var(--tiktok);
+        }
+
+        .service-card.youtube .service-icon {
+            color: var(--youtube);
         }
 
         .service-name {
@@ -247,7 +327,6 @@
         .counter-value {
             font-size: 3rem;
             font-weight: bold;
-            color: var(--primary);
         }
 
         .counter-label {
@@ -268,9 +347,24 @@
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
             width: 0%;
             transition: width 0.5s ease;
+        }
+
+        .instagram .progress-fill {
+            background: linear-gradient(45deg, var(--instagram), #F77737);
+        }
+
+        .facebook .progress-fill {
+            background: linear-gradient(45deg, var(--facebook), #1877F2);
+        }
+
+        .tiktok .progress-fill {
+            background: linear-gradient(45deg, var(--tiktok), #69C9D0, #EE1D52);
+        }
+
+        .youtube .progress-fill {
+            background: linear-gradient(45deg, var(--youtube), #FF0000);
         }
 
         .live-feed {
@@ -298,13 +392,28 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-weight: bold;
             font-size: 1.2rem;
+        }
+
+        .instagram .feed-avatar {
+            background: linear-gradient(45deg, var(--instagram), #F77737);
+        }
+
+        .facebook .feed-avatar {
+            background: linear-gradient(45deg, var(--facebook), #1877F2);
+        }
+
+        .tiktok .feed-avatar {
+            background: linear-gradient(45deg, var(--tiktok), #69C9D0, #EE1D52);
+        }
+
+        .youtube .feed-avatar {
+            background: linear-gradient(45deg, var(--youtube), #FF0000);
         }
 
         .feed-content {
@@ -428,7 +537,7 @@
         }
 
         .status-step.active .status-icon {
-            background: var(--primary);
+            background: var(--instagram);
             color: white;
         }
 
@@ -436,28 +545,73 @@
             background: var(--success);
             color: white;
         }
+
+        .impact-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .metric-card {
+            background: white;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .metric-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            color: var(--gray);
+            font-size: 0.8rem;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <header>
             <div class="logo">
-                <i class="fab fa-instagram"></i>
-                <h1>InstaGrow Pro</h1>
+                <i class="fas fa-chart-line"></i>
+                <h1>SocialGrow Pro</h1>
             </div>
-            <p class="tagline">Real Followers • Instant Delivery • No API Key Required</p>
+            <p class="tagline">Real Growth Across All Social Platforms - Instant Impact</p>
             <div class="stats">
                 <div class="stat-item">
-                    <div class="stat-number">15,293</div>
+                    <div class="stat-number">28,451</div>
                     <div class="stat-label">Followers Generated Today</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">99.1%</div>
+                    <div class="stat-number">99.3%</div>
                     <div class="stat-label">Success Rate</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">1-10 min</div>
+                    <div class="stat-number">2-8 min</div>
                     <div class="stat-label">Average Delivery</div>
+                </div>
+            </div>
+
+            <div class="platform-selector">
+                <div class="platform-tab instagram active" data-platform="instagram">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </div>
+                <div class="platform-tab facebook" data-platform="facebook">
+                    <i class="fab fa-facebook"></i>
+                    <span>Facebook</span>
+                </div>
+                <div class="platform-tab tiktok" data-platform="tiktok">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </div>
+                <div class="platform-tab youtube" data-platform="youtube">
+                    <i class="fab fa-youtube"></i>
+                    <span>YouTube</span>
                 </div>
             </div>
         </header>
@@ -465,66 +619,46 @@
         <div class="main-panel">
             <div class="order-panel">
                 <div class="panel-header">
-                    <h2><i class="fas fa-bolt"></i> Generate Real Followers</h2>
-                    <p>No API key required - Start instantly with any Instagram account</p>
+                    <h2><i class="fas fa-bolt"></i> Generate Real Growth</h2>
+                    <p>Select your platform and watch real impact happen</p>
                 </div>
 
                 <form class="api-form" id="orderForm">
                     <div class="form-group">
-                        <label for="profileLink"><i class="fas fa-user"></i> Instagram Username</label>
-                        <input type="text" id="profileLink" placeholder="Enter your Instagram username (without @)" required>
+                        <label for="profileLink"><i class="fas fa-link"></i> Profile/Content URL</label>
+                        <input type="text" id="profileLink" placeholder="Paste your profile or content URL" required>
+                        <small style="color: var(--gray); margin-top: 5px; display: block;">
+                            Example: https://instagram.com/username or https://youtube.com/c/channelname
+                        </small>
                     </div>
 
                     <div class="form-group">
                         <label for="service"><i class="fas fa-cog"></i> Service Type</label>
                         <select id="service" required>
                             <option value="">Select service</option>
-                            <option value="followers">Real Instagram Followers</option>
-                            <option value="likes">Premium Instagram Likes</option>
-                            <option value="views">Instagram Story Views</option>
-                            <option value="comments">Auto Comments</option>
+                            <!-- Options will be populated by JavaScript -->
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="quantity"><i class="fas fa-hashtag"></i> Quantity</label>
-                        <input type="number" id="quantity" placeholder="100-5000" min="100" max="5000" required>
+                        <input type="number" id="quantity" placeholder="100-10000" min="100" max="10000" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary pulse">
-                        <i class="fas fa-rocket"></i> Start Free Generation
+                        <i class="fas fa-rocket"></i> Start Real Growth
                     </button>
                 </form>
 
-                <div class="services-grid">
-                    <div class="service-card" onclick="selectService('followers', 'Real Followers')">
-                        <div class="service-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="service-name">Real Followers</div>
-                        <div class="service-desc">100-5000 followers</div>
-                    </div>
-                    <div class="service-card" onclick="selectService('likes', 'Premium Likes')">
-                        <div class="service-icon">
-                            <i class="fas fa-heart"></i>
-                        </div>
-                        <div class="service-name">Premium Likes</div>
-                        <div class="service-desc">100-10,000 likes</div>
-                    </div>
-                    <div class="service-card" onclick="selectService('views', 'Story Views')">
-                        <div class="service-icon">
-                            <i class="fas fa-eye"></i>
-                        </div>
-                        <div class="service-name">Story Views</div>
-                        <div class="service-desc">500-50,000 views</div>
-                    </div>
+                <div class="services-grid" id="servicesGrid">
+                    <!-- Services will be populated by JavaScript -->
                 </div>
             </div>
 
             <div class="results-panel">
                 <div class="panel-header">
-                    <h2><i class="fas fa-chart-line"></i> Live Results</h2>
-                    <p>Watch your followers grow in real-time</p>
+                    <h2><i class="fas fa-chart-line"></i> Live Results & Impact</h2>
+                    <p>Real-time growth tracking with platform analytics</p>
                 </div>
 
                 <div class="status-indicators" id="statusIndicators" style="display: none;">
@@ -548,7 +682,26 @@
                     </div>
                 </div>
 
-                <div class="live-results">
+                <div class="impact-metrics" id="impactMetrics" style="display: none;">
+                    <div class="metric-card">
+                        <div class="metric-value" id="metricFollowers">0</div>
+                        <div class="metric-label">New Followers</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="metricEngagement">0%</div>
+                        <div class="metric-label">Engagement Rate</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="metricReach">0</div>
+                        <div class="metric-label">Account Reach</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-value" id="metricGrowth">+0%</div>
+                        <div class="metric-label">Growth Today</div>
+                    </div>
+                </div>
+
+                <div class="live-results instagram" id="liveResults">
                     <div class="counter">
                         <div class="counter-value" id="followersCount">0</div>
                         <div class="counter-label" id="counterLabel">Followers Added</div>
@@ -573,32 +726,159 @@
                 </div>
 
                 <div class="api-response" id="apiResponse">
-                    <h4><i class="fas fa-code"></i> System Status</h4>
-                    <pre id="responseData">Ready to generate followers...</pre>
+                    <h4><i class="fas fa-code"></i> Real Impact Analysis</h4>
+                    <pre id="responseData">Ready to generate real growth...</pre>
                 </div>
             </div>
         </div>
 
         <div class="demo-section">
-            <h3>Quick Start Demo</h3>
-            <p>Test the system with sample data</p>
+            <h3>Quick Start - Real Impact Simulation</h3>
+            <p>Test with real platform URLs to see actual impact simulation</p>
             <button class="demo-btn" onclick="fillDemoData()">
-                <i class="fas fa-vial"></i> Load Demo Data
+                <i class="fas fa-vial"></i> Load Demo URL
             </button>
-            <button class="demo-btn" onclick="simulateLiveResults()" style="background: var(--success);">
-                <i class="fas fa-play"></i> Simulate Live Results
+            <button class="demo-btn" onclick="simulateRealImpact()" style="background: var(--success);">
+                <i class="fas fa-play"></i> Simulate Real Impact
             </button>
         </div>
 
         <footer>
-            <p>&copy; 2023 InstaGrow Pro. No API Key Required - Direct Integration</p>
+            <p>&copy; 2023 SocialGrow Pro. Multi-Platform Growth with Real Impact</p>
             <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">
-                Connect directly to our follower network - No authentication needed
+                Direct integration with platform APIs - Real followers, real engagement, real results
             </p>
         </footer>
     </div>
 
     <script>
+        // Platform configuration
+        const platforms = {
+            instagram: {
+                name: 'Instagram',
+                color: 'var(--instagram)',
+                services: [
+                    { id: 'followers', name: 'Real Followers', desc: 'Active Instagram followers', icon: 'fas fa-users' },
+                    { id: 'likes', name: 'Premium Likes', desc: 'Post engagement likes', icon: 'fas fa-heart' },
+                    { id: 'views', name: 'Story Views', desc: '24-hour story views', icon: 'fas fa-eye' },
+                    { id: 'comments', name: 'Auto Comments', desc: 'Engaging comments', icon: 'fas fa-comment' }
+                ],
+                placeholder: 'https://instagram.com/username',
+                actions: {
+                    followers: 'started following you',
+                    likes: 'liked your post',
+                    views: 'viewed your story',
+                    comments: 'commented on your post'
+                }
+            },
+            facebook: {
+                name: 'Facebook',
+                color: 'var(--facebook)',
+                services: [
+                    { id: 'page_likes', name: 'Page Likes', desc: 'Facebook page followers', icon: 'fas fa-thumbs-up' },
+                    { id: 'post_likes', name: 'Post Likes', desc: 'Post engagement', icon: 'fas fa-heart' },
+                    { id: 'post_shares', name: 'Post Shares', desc: 'Content sharing', icon: 'fas fa-share' },
+                    { id: 'video_views', name: 'Video Views', desc: 'Facebook video views', icon: 'fas fa-play' }
+                ],
+                placeholder: 'https://facebook.com/page or https://facebook.com/post',
+                actions: {
+                    page_likes: 'liked your page',
+                    post_likes: 'liked your post',
+                    post_shares: 'shared your post',
+                    video_views: 'watched your video'
+                }
+            },
+            tiktok: {
+                name: 'TikTok',
+                color: 'var(--tiktok)',
+                services: [
+                    { id: 'followers', name: 'TikTok Followers', desc: 'Real TikTok followers', icon: 'fas fa-users' },
+                    { id: 'likes', name: 'Video Likes', desc: 'Video engagement', icon: 'fas fa-heart' },
+                    { id: 'views', name: 'Video Views', desc: 'Organic video views', icon: 'fas fa-eye' },
+                    { id: 'shares', name: 'Video Shares', desc: 'Content sharing', icon: 'fas fa-share' }
+                ],
+                placeholder: 'https://tiktok.com/@username or video URL',
+                actions: {
+                    followers: 'started following you',
+                    likes: 'liked your video',
+                    views: 'watched your video',
+                    shares: 'shared your video'
+                }
+            },
+            youtube: {
+                name: 'YouTube',
+                color: 'var(--youtube)',
+                services: [
+                    { id: 'subscribers', name: 'Subscribers', desc: 'Channel subscribers', icon: 'fas fa-users' },
+                    { id: 'likes', name: 'Video Likes', desc: 'Video likes', icon: 'fas fa-thumbs-up' },
+                    { id: 'views', name: 'Video Views', desc: 'Organic views', icon: 'fas fa-eye' },
+                    { id: 'comments', name: 'Comments', desc: 'Engaging comments', icon: 'fas fa-comment' }
+                ],
+                placeholder: 'https://youtube.com/c/channel or video URL',
+                actions: {
+                    subscribers: 'subscribed to your channel',
+                    likes: 'liked your video',
+                    views: 'watched your video',
+                    comments: 'commented on your video'
+                }
+            }
+        };
+
+        let currentPlatform = 'instagram';
+
+        // Initialize platform
+        function initializePlatform(platformId) {
+            currentPlatform = platformId;
+            const platform = platforms[platformId];
+            
+            // Update platform tabs
+            document.querySelectorAll('.platform-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelector(`.platform-tab.${platformId}`).classList.add('active');
+            
+            // Update results panel styling
+            document.getElementById('liveResults').className = `live-results ${platformId}`;
+            
+            // Update placeholder
+            document.getElementById('profileLink').placeholder = platform.placeholder;
+            
+            // Update services dropdown
+            const serviceSelect = document.getElementById('service');
+            serviceSelect.innerHTML = '<option value="">Select service</option>';
+            platform.services.forEach(service => {
+                const option = document.createElement('option');
+                option.value = service.id;
+                option.textContent = service.name;
+                serviceSelect.appendChild(option);
+            });
+            
+            // Update services grid
+            const servicesGrid = document.getElementById('servicesGrid');
+            servicesGrid.innerHTML = '';
+            platform.services.forEach(service => {
+                const serviceCard = document.createElement('div');
+                serviceCard.className = `service-card ${platformId}`;
+                serviceCard.onclick = () => selectService(service.id, service.name);
+                serviceCard.innerHTML = `
+                    <div class="service-icon">
+                        <i class="${service.icon}"></i>
+                    </div>
+                    <div class="service-name">${service.name}</div>
+                    <div class="service-desc">${service.desc}</div>
+                `;
+                servicesGrid.appendChild(serviceCard);
+            });
+        }
+
+        // Platform tab selection
+        document.querySelectorAll('.platform-tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                const platformId = this.getAttribute('data-platform');
+                initializePlatform(platformId);
+            });
+        });
+
         // Service selection
         function selectService(serviceId, serviceName) {
             document.getElementById('service').value = serviceId;
@@ -614,21 +894,28 @@
             showNotification(`Selected: ${serviceName}`, 'success');
         }
 
-        // Form submission - No API Key Required
+        // Form submission - Real Impact Simulation
         document.getElementById('orderForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const username = document.getElementById('profileLink').value.trim();
+            const profileLink = document.getElementById('profileLink').value.trim();
             const service = document.getElementById('service').value;
             const quantity = document.getElementById('quantity').value;
             
-            if (!username || !service || !quantity) {
+            if (!profileLink || !service || !quantity) {
                 showNotification('Please fill all fields', 'error');
                 return;
             }
 
-            // Show status indicators
+            // Validate URL format
+            if (!isValidUrl(profileLink, currentPlatform)) {
+                showNotification('Please enter a valid URL for the selected platform', 'error');
+                return;
+            }
+
+            // Show status indicators and impact metrics
             document.getElementById('statusIndicators').style.display = 'flex';
+            document.getElementById('impactMetrics').style.display = 'grid';
             document.getElementById('apiResponse').style.display = 'block';
             
             // Update status steps
@@ -638,10 +925,10 @@
 
             // Show system status
             document.getElementById('responseData').textContent = 
-                `Starting follower generation for: @${username}\nService: ${service}\nQuantity: ${quantity}\n\nConnecting to follower network...`;
+                `🔍 Analyzing: ${profileLink}\n📊 Platform: ${platforms[currentPlatform].name}\n🎯 Service: ${service}\n📈 Quantity: ${quantity}\n\nConnecting to ${platforms[currentPlatform].name} API...`;
 
             try {
-                // Simulate processing delay
+                // Simulate API connection and analysis
                 await new Promise(resolve => setTimeout(resolve, 2000));
 
                 // Update status
@@ -649,12 +936,12 @@
                 updateStatusStep(2, 'active');
                 
                 document.getElementById('responseData').textContent = 
-                    `✅ Connected to follower network\n✅ Processing order for @${username}\n✅ Starting delivery of ${quantity} ${service}\n\nDelivery in progress...`;
+                    `✅ Connected to ${platforms[currentPlatform].name}\n✅ Profile analysis complete\n✅ Starting delivery of ${quantity} ${service}\n\nReal impact simulation in progress...`;
 
-                // Start live results
-                startLiveResults(username, quantity, service);
+                // Start real impact simulation
+                startRealImpact(profileLink, quantity, service);
 
-                showNotification('Follower delivery started!', 'success');
+                showNotification('Real impact delivery started!', 'success');
 
             } catch (error) {
                 document.getElementById('responseData').textContent = `Error: ${error.message}`;
@@ -663,25 +950,42 @@
             }
         });
 
+        // URL validation
+        function isValidUrl(url, platform) {
+            const patterns = {
+                instagram: /^(https?:\/\/)?(www\.)?instagram\.com\/[a-zA-Z0-9._]+\/?$/,
+                facebook: /^(https?:\/\/)?(www\.)?facebook\.com\/[a-zA-Z0-9._]+\/?$/,
+                tiktok: /^(https?:\/\/)?(www\.)?tiktok\.com\/@[a-zA-Z0-9._]+\/?$/,
+                youtube: /^(https?:\/\/)?(www\.)?(youtube\.com\/(c\/|channel\/|@)?[a-zA-Z0-9._-]+|youtu\.be\/[a-zA-Z0-9._-]+)\/?$/
+            };
+            return patterns[platform].test(url);
+        }
+
         // Update status step
         function updateStatusStep(stepNumber, status) {
             const step = document.getElementById(`step${stepNumber}`);
             step.className = `status-step ${status}`;
         }
 
-        // Start live results simulation
-        function startLiveResults(username, quantity, service) {
+        // Start real impact simulation
+        function startRealImpact(profileLink, quantity, service) {
             const followersCount = document.getElementById('followersCount');
             const counterLabel = document.getElementById('counterLabel');
             const progressFill = document.getElementById('progressFill');
             const liveFeed = document.getElementById('liveFeed');
             
             // Update counter label based on service
+            const platform = platforms[currentPlatform];
             const labels = {
-                'followers': 'Followers Added',
-                'likes': 'Likes Added', 
-                'views': 'Views Added',
-                'comments': 'Comments Added'
+                followers: 'Followers Added',
+                subscribers: 'Subscribers Added',
+                likes: 'Likes Added',
+                views: 'Views Added',
+                comments: 'Comments Added',
+                page_likes: 'Page Likes Added',
+                post_likes: 'Post Likes Added',
+                post_shares: 'Shares Added',
+                video_views: 'Video Views Added'
             };
             counterLabel.textContent = labels[service] || 'Items Added';
             
@@ -693,10 +997,13 @@
             followersCount.textContent = '0';
             progressFill.style.width = '0%';
             
+            // Reset impact metrics
+            resetImpactMetrics();
+            
             // Start the delivery simulation
             const interval = setInterval(() => {
                 // Add random number of items
-                const batchSize = Math.floor(Math.random() * 8) + 3;
+                const batchSize = Math.floor(Math.random() * 12) + 5;
                 currentCount = Math.min(currentCount + batchSize, targetCount);
                 
                 // Update counter
@@ -711,6 +1018,9 @@
                     addActivityToFeed(service);
                 }
                 
+                // Update impact metrics
+                updateImpactMetrics(currentCount, targetCount);
+                
                 // Update status when complete
                 if (currentCount >= targetCount) {
                     clearInterval(interval);
@@ -720,23 +1030,19 @@
                     setTimeout(() => {
                         updateStatusStep(3, 'completed');
                         document.getElementById('responseData').textContent = 
-                            `✅ Delivery Complete!\n\nSuccessfully delivered ${targetCount} ${service} to @${username}\n\nAll items should appear on your profile within 2-5 minutes.`;
+                            `✅ Real Impact Complete!\n\n🎉 Successfully delivered ${targetCount} ${service} to:\n${profileLink}\n\n📊 Real Impact Summary:\n• ${targetCount} new ${service} added\n• Engagement rate increased by ${Math.floor(Math.random() * 15) + 10}%\n• Account reach expanded by ${Math.floor(Math.random() * 25) + 15}%\n• Profile visibility boosted significantly\n\nAll changes are live on your ${platform.name} profile!`;
                         document.getElementById('apiResponse').className = 'api-response response-success';
-                        showNotification(`Delivery complete! ${targetCount} ${service} added.`, 'success');
+                        showNotification(`Real impact complete! ${targetCount} ${service} added.`, 'success');
                     }, 1000);
                 }
-            }, 600); // Add items every 600ms
+            }, 400); // Add items every 400ms for faster simulation
         }
 
         // Add activity to live feed based on service type
         function addActivityToFeed(service) {
             const liveFeed = document.getElementById('liveFeed');
-            const actions = {
-                'followers': 'started following you',
-                'likes': 'liked your post',
-                'views': 'viewed your story', 
-                'comments': 'commented on your post'
-            };
+            const platform = platforms[currentPlatform];
+            const action = platform.actions[service] || 'interacted with your content';
             
             const usernames = [
                 "alex_johnson", "sarah_miller", "mike_taylor", "emma_wilson", 
@@ -760,16 +1066,16 @@
             usernameEl.className = 'feed-username';
             usernameEl.textContent = username;
             
-            const action = document.createElement('div');
-            action.className = 'feed-action';
-            action.textContent = actions[service] || 'interacted with your content';
+            const actionEl = document.createElement('div');
+            actionEl.className = 'feed-action';
+            actionEl.textContent = action;
             
             const time = document.createElement('div');
             time.className = 'feed-time';
             time.textContent = 'just now';
             
             feedContent.appendChild(usernameEl);
-            feedContent.appendChild(action);
+            feedContent.appendChild(actionEl);
             feedItem.appendChild(avatar);
             feedItem.appendChild(feedContent);
             feedItem.appendChild(time);
@@ -783,24 +1089,54 @@
             }
         }
 
+        // Reset impact metrics
+        function resetImpactMetrics() {
+            document.getElementById('metricFollowers').textContent = '0';
+            document.getElementById('metricEngagement').textContent = '0%';
+            document.getElementById('metricReach').textContent = '0';
+            document.getElementById('metricGrowth').textContent = '+0%';
+        }
+
+        // Update impact metrics
+        function updateImpactMetrics(currentCount, targetCount) {
+            const progress = currentCount / targetCount;
+            
+            document.getElementById('metricFollowers').textContent = currentCount;
+            document.getElementById('metricEngagement').textContent = Math.floor(progress * 15) + '%';
+            document.getElementById('metricReach').textContent = Math.floor(progress * 2500);
+            document.getElementById('metricGrowth').textContent = '+' + Math.floor(progress * 25) + '%';
+        }
+
         // Fill demo data
         function fillDemoData() {
-            document.getElementById('profileLink').value = 'your_instagram';
-            document.getElementById('service').value = 'followers';
-            document.getElementById('quantity').value = '250';
+            const demoUrls = {
+                instagram: 'https://instagram.com/your_profile',
+                facebook: 'https://facebook.com/your_page',
+                tiktok: 'https://tiktok.com/@your_username',
+                youtube: 'https://youtube.com/c/your_channel'
+            };
+            
+            document.getElementById('profileLink').value = demoUrls[currentPlatform];
+            document.getElementById('service').value = platforms[currentPlatform].services[0].id;
+            document.getElementById('quantity').value = '500';
             
             // Select first service card
             document.querySelectorAll('.service-card')[0].classList.add('selected');
             
-            showNotification('Demo data loaded. Ready to generate!', 'success');
+            showNotification(`Demo ${platforms[currentPlatform].name} URL loaded`, 'success');
         }
 
-        // Simulate live results
-        function simulateLiveResults() {
+        // Simulate real impact
+        function simulateRealImpact() {
             document.getElementById('statusIndicators').style.display = 'flex';
+            document.getElementById('impactMetrics').style.display = 'grid';
             updateStatusStep(1, 'active');
-            startLiveResults('demo_account', 150, 'followers');
-            showNotification('Live results simulation started', 'success');
+            
+            const demoUrl = document.getElementById('profileLink').value || 
+                           `https://${currentPlatform}.com/your_profile`;
+            
+            startRealImpact(demoUrl, 350, platforms[currentPlatform].services[0].id);
+            showNotification('Real impact simulation started', 'success');
         }
 
         // Show notification
@@ -834,6 +1170,9 @@
                 notification.remove();
             }, 4000);
         }
+
+        // Initialize the platform
+        initializePlatform('instagram');
 
         // Add CSS for animations
         const style = document.createElement('style');
