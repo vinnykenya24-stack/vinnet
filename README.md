@@ -112,6 +112,86 @@
             margin-bottom: 10px;
         }
         
+        .profile-link-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .profile-link-input {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .profile-link-input input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .profile-link-input input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .profile-link-input button {
+            padding: 15px 25px;
+            border: none;
+            border-radius: 15px;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .profile-link-input button:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .profile-preview {
+            margin-top: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: none;
+        }
+        
+        .profile-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+        }
+        
+        .profile-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .profile-details p {
+            opacity: 0.8;
+        }
+        
         .generator {
             background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
@@ -176,6 +256,13 @@
         
         .generate-btn:active {
             transform: translateY(1px);
+        }
+        
+        .generate-btn:disabled {
+            background: rgba(255, 255, 255, 0.2);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
         }
         
         .results {
@@ -275,6 +362,10 @@
                 flex-direction: column;
             }
             
+            .profile-link-input {
+                flex-direction: column;
+            }
+            
             h1 {
                 font-size: 2.2rem;
             }
@@ -318,6 +409,26 @@
             </div>
         </div>
         
+        <div class="profile-link-section">
+            <h2>Enter Your Profile Link</h2>
+            <p>Paste the link to your social media profile below</p>
+            
+            <div class="profile-link-input">
+                <input type="text" id="profileLink" placeholder="https://instagram.com/yourusername">
+                <button id="validateBtn">Validate Profile</button>
+            </div>
+            
+            <div class="profile-preview" id="profilePreview">
+                <div class="profile-info">
+                    <div class="profile-avatar" id="profileAvatar">👤</div>
+                    <div class="profile-details">
+                        <h3 id="profileName">Username</h3>
+                        <p id="profileBio">Bio will appear here</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
         <div class="generator">
             <h2>Generate Followers</h2>
             <p>Select how many followers you want to generate</p>
@@ -335,7 +446,7 @@
                 <span id="followerCount">1,000</span> followers
             </div>
             
-            <button class="generate-btn" id="generateBtn">Generate Followers Now</button>
+            <button class="generate-btn" id="generateBtn" disabled>Generate Followers Now</button>
         </div>
         
         <div class="results" id="results">
@@ -384,6 +495,12 @@
         const progressText = document.getElementById('progressText');
         const followerList = document.getElementById('followerList');
         const platforms = document.querySelectorAll('.platform');
+        const profileLink = document.getElementById('profileLink');
+        const validateBtn = document.getElementById('validateBtn');
+        const profilePreview = document.getElementById('profilePreview');
+        const profileName = document.getElementById('profileName');
+        const profileBio = document.getElementById('profileBio');
+        const profileAvatar = document.getElementById('profileAvatar');
         
         // Update follower count display when slider changes
         followerSlider.addEventListener('input', function() {
@@ -396,8 +513,99 @@
             platform.addEventListener('click', function() {
                 platforms.forEach(p => p.classList.remove('active'));
                 this.classList.add('active');
+                
+                // Update placeholder text based on platform
+                const platformName = this.getAttribute('data-platform');
+                profileLink.placeholder = getPlaceholderForPlatform(platformName);
             });
         });
+        
+        // Get placeholder text for platform
+        function getPlaceholderForPlatform(platform) {
+            switch(platform) {
+                case 'instagram':
+                    return 'https://instagram.com/yourusername';
+                case 'twitter':
+                    return 'https://twitter.com/yourusername';
+                case 'tiktok':
+                    return 'https://tiktok.com/@yourusername';
+                case 'youtube':
+                    return 'https://youtube.com/c/yourchannel';
+                default:
+                    return 'https://example.com/yourprofile';
+            }
+        }
+        
+        // Validate profile link
+        validateBtn.addEventListener('click', function() {
+            const link = profileLink.value.trim();
+            
+            if (!link) {
+                alert('Please enter a profile link');
+                return;
+            }
+            
+            // Show loading state
+            validateBtn.textContent = 'Validating...';
+            validateBtn.disabled = true;
+            
+            // Simulate validation process
+            setTimeout(() => {
+                // Simulate successful validation
+                const platform = document.querySelector('.platform.active').getAttribute('data-platform');
+                const username = extractUsername(link, platform);
+                
+                if (username) {
+                    // Show profile preview
+                    profileName.textContent = username;
+                    profileBio.textContent = getRandomBio();
+                    profileAvatar.textContent = getRandomEmoji();
+                    profilePreview.style.display = 'block';
+                    
+                    // Enable generate button
+                    generateBtn.disabled = false;
+                    
+                    // Update validation button
+                    validateBtn.textContent = 'Profile Validated!';
+                    validateBtn.style.background = 'rgba(0, 255, 0, 0.3)';
+                } else {
+                    alert('Invalid profile link. Please check the URL and try again.');
+                    validateBtn.textContent = 'Validate Profile';
+                    validateBtn.disabled = false;
+                }
+            }, 1500);
+        });
+        
+        // Extract username from URL
+        function extractUsername(url, platform) {
+            // This is a simplified simulation - in a real app, you'd use proper URL parsing
+            if (url.includes('instagram.com')) return 'instagram_user';
+            if (url.includes('twitter.com')) return 'twitter_user';
+            if (url.includes('tiktok.com')) return 'tiktok_user';
+            if (url.includes('youtube.com')) return 'youtube_channel';
+            return 'user_' + Math.floor(Math.random() * 1000);
+        }
+        
+        // Get random bio
+        function getRandomBio() {
+            const bios = [
+                "Digital creator | Photography enthusiast",
+                "Just living my best life 🌟",
+                "Professional content creator",
+                "Travel • Food • Lifestyle",
+                "Making the world a better place",
+                "Tech geek and coffee lover",
+                "Fitness enthusiast | Healthy lifestyle",
+                "Artist and dreamer"
+            ];
+            return bios[Math.floor(Math.random() * bios.length)];
+        }
+        
+        // Get random emoji for avatar
+        function getRandomEmoji() {
+            const emojis = ['👤', '😊', '😎', '🤩', '🧑', '👩', '🧑‍💻', '👨‍🎨', '👩‍🎤'];
+            return emojis[Math.floor(Math.random() * emojis.length)];
+        }
         
         // Generate followers
         generateBtn.addEventListener('click', function() {
@@ -466,6 +674,7 @@
             
             const avatar = document.createElement('div');
             avatar.className = 'follower-avatar';
+            avatar.textContent = getRandomEmoji();
             
             const name = document.createElement('div');
             name.textContent = usernames[Math.floor(Math.random() * usernames.length)];
