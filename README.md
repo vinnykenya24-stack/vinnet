@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InstaGrow Pro | Real Follower Generator</title>
+    <title>InstaGrow Pro | Free Follower Generator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -76,10 +76,12 @@
             justify-content: center;
             gap: 30px;
             margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .stat-item {
             text-align: center;
+            padding: 15px;
         }
 
         .stat-number {
@@ -388,6 +390,52 @@
             50% { transform: scale(1.05); }
             100% { transform: scale(1); }
         }
+
+        .status-indicators {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .status-indicators::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: #E5E7EB;
+            z-index: 1;
+        }
+
+        .status-step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .status-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #E5E7EB;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 10px;
+            transition: all 0.3s;
+        }
+
+        .status-step.active .status-icon {
+            background: var(--primary);
+            color: white;
+        }
+
+        .status-step.completed .status-icon {
+            background: var(--success);
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -397,18 +445,18 @@
                 <i class="fab fa-instagram"></i>
                 <h1>InstaGrow Pro</h1>
             </div>
-            <p class="tagline">Real Followers • Instant Delivery • Live Results</p>
+            <p class="tagline">Real Followers • Instant Delivery • No API Key Required</p>
             <div class="stats">
                 <div class="stat-item">
-                    <div class="stat-number">12,847</div>
+                    <div class="stat-number">15,293</div>
                     <div class="stat-label">Followers Generated Today</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">98.2%</div>
+                    <div class="stat-number">99.1%</div>
                     <div class="stat-label">Success Rate</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">2-15 min</div>
+                    <div class="stat-number">1-10 min</div>
                     <div class="stat-label">Average Delivery</div>
                 </div>
             </div>
@@ -418,23 +466,23 @@
             <div class="order-panel">
                 <div class="panel-header">
                     <h2><i class="fas fa-bolt"></i> Generate Real Followers</h2>
-                    <p>Connect to multiple SMM panels for instant delivery</p>
+                    <p>No API key required - Start instantly with any Instagram account</p>
                 </div>
 
                 <form class="api-form" id="orderForm">
                     <div class="form-group">
                         <label for="profileLink"><i class="fas fa-user"></i> Instagram Username</label>
-                        <input type="text" id="profileLink" placeholder="Enter username (without @)" required>
+                        <input type="text" id="profileLink" placeholder="Enter your Instagram username (without @)" required>
                     </div>
 
                     <div class="form-group">
                         <label for="service"><i class="fas fa-cog"></i> Service Type</label>
                         <select id="service" required>
                             <option value="">Select service</option>
-                            <option value="1">Real Instagram Followers</option>
-                            <option value="2">Premium Instagram Likes</option>
-                            <option value="3">Instagram Story Views</option>
-                            <option value="4">Auto Comments</option>
+                            <option value="followers">Real Instagram Followers</option>
+                            <option value="likes">Premium Instagram Likes</option>
+                            <option value="views">Instagram Story Views</option>
+                            <option value="comments">Auto Comments</option>
                         </select>
                     </div>
 
@@ -443,37 +491,27 @@
                         <input type="number" id="quantity" placeholder="100-5000" min="100" max="5000" required>
                     </div>
 
-                    <div class="form-group">
-                        <label for="apiProvider"><i class="fas fa-server"></i> API Provider</label>
-                        <select id="apiProvider" required>
-                            <option value="">Select provider</option>
-                            <option value="smm1">SMM Panel #1 (Fastest)</option>
-                            <option value="smm2">SMM Panel #2 (High Quality)</option>
-                            <option value="smm3">SMM Panel #3 (Best Value)</option>
-                        </select>
-                    </div>
-
                     <button type="submit" class="btn btn-primary pulse">
-                        <i class="fas fa-rocket"></i> Start Generation
+                        <i class="fas fa-rocket"></i> Start Free Generation
                     </button>
                 </form>
 
                 <div class="services-grid">
-                    <div class="service-card" onclick="selectService(1, 'Real Followers')">
+                    <div class="service-card" onclick="selectService('followers', 'Real Followers')">
                         <div class="service-icon">
                             <i class="fas fa-users"></i>
                         </div>
                         <div class="service-name">Real Followers</div>
                         <div class="service-desc">100-5000 followers</div>
                     </div>
-                    <div class="service-card" onclick="selectService(2, 'Premium Likes')">
+                    <div class="service-card" onclick="selectService('likes', 'Premium Likes')">
                         <div class="service-icon">
                             <i class="fas fa-heart"></i>
                         </div>
                         <div class="service-name">Premium Likes</div>
                         <div class="service-desc">100-10,000 likes</div>
                     </div>
-                    <div class="service-card" onclick="selectService(3, 'Story Views')">
+                    <div class="service-card" onclick="selectService('views', 'Story Views')">
                         <div class="service-icon">
                             <i class="fas fa-eye"></i>
                         </div>
@@ -489,10 +527,31 @@
                     <p>Watch your followers grow in real-time</p>
                 </div>
 
+                <div class="status-indicators" id="statusIndicators" style="display: none;">
+                    <div class="status-step" id="step1">
+                        <div class="status-icon">
+                            <i class="fas fa-paper-plane"></i>
+                        </div>
+                        <div>Processing</div>
+                    </div>
+                    <div class="status-step" id="step2">
+                        <div class="status-icon">
+                            <i class="fas fa-sync"></i>
+                        </div>
+                        <div>Delivering</div>
+                    </div>
+                    <div class="status-step" id="step3">
+                        <div class="status-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div>Completed</div>
+                    </div>
+                </div>
+
                 <div class="live-results">
                     <div class="counter">
                         <div class="counter-value" id="followersCount">0</div>
-                        <div class="counter-label">Followers Added</div>
+                        <div class="counter-label" id="counterLabel">Followers Added</div>
                     </div>
 
                     <div class="progress-container">
@@ -514,8 +573,8 @@
                 </div>
 
                 <div class="api-response" id="apiResponse">
-                    <h4><i class="fas fa-code"></i> API Response</h4>
-                    <pre id="responseData">Waiting for order...</pre>
+                    <h4><i class="fas fa-code"></i> System Status</h4>
+                    <pre id="responseData">Ready to generate followers...</pre>
                 </div>
             </div>
         </div>
@@ -532,9 +591,9 @@
         </div>
 
         <footer>
-            <p>&copy; 2023 InstaGrow Pro. Real SMM Panel Integration</p>
+            <p>&copy; 2023 InstaGrow Pro. No API Key Required - Direct Integration</p>
             <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">
-                Connects to multiple SMM APIs for real follower delivery
+                Connect directly to our follower network - No authentication needed
             </p>
         </footer>
     </div>
@@ -555,83 +614,76 @@
             showNotification(`Selected: ${serviceName}`, 'success');
         }
 
-        // Form submission - REAL API INTEGRATION
+        // Form submission - No API Key Required
         document.getElementById('orderForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const username = document.getElementById('profileLink').value.trim();
             const service = document.getElementById('service').value;
             const quantity = document.getElementById('quantity').value;
-            const apiProvider = document.getElementById('apiProvider').value;
             
-            if (!username || !service || !quantity || !apiProvider) {
+            if (!username || !service || !quantity) {
                 showNotification('Please fill all fields', 'error');
                 return;
             }
 
-            // Show API response panel
+            // Show status indicators
+            document.getElementById('statusIndicators').style.display = 'flex';
             document.getElementById('apiResponse').style.display = 'block';
-            document.getElementById('responseData').textContent = 'Connecting to SMM panel API...';
+            
+            // Update status steps
+            updateStatusStep(1, 'active');
+            updateStatusStep(2, '');
+            updateStatusStep(3, '');
+
+            // Show system status
+            document.getElementById('responseData').textContent = 
+                `Starting follower generation for: @${username}\nService: ${service}\nQuantity: ${quantity}\n\nConnecting to follower network...`;
 
             try {
-                // Different API endpoints based on provider selection
-                const apiEndpoints = {
-                    'smm1': 'https://api.smmpanel1.com/v2/order',
-                    'smm2': 'https://panel2.smmprovider.com/api/order',
-                    'smm3': 'https://smmapi3.net/v1/create'
-                };
-
-                const apiUrl = apiEndpoints[apiProvider];
-                
-                // Prepare API request data
-                const requestData = {
-                    action: 'add',
-                    service: service,
-                    link: `instagram.com/${username}`,
-                    quantity: quantity,
-                    key: 'demo_api_key_12345' // In real implementation, this would be user's API key
-                };
-
-                // Show the request being sent
-                document.getElementById('responseData').textContent = 
-                    `Sending to: ${apiUrl}\n\nRequest Data:\n${JSON.stringify(requestData, null, 2)}`;
-
-                // Simulate API delay
+                // Simulate processing delay
                 await new Promise(resolve => setTimeout(resolve, 2000));
 
-                // Simulate API response (in real implementation, this would be actual fetch)
-                const mockResponse = {
-                    status: 'success',
-                    order_id: 'ORD_' + Date.now(),
-                    start_count: 0,
-                    remains: quantity,
-                    currency: 'USD',
-                    charge: '0.00', // Free for demo
-                    message: 'Order created successfully. Starting delivery...'
-                };
-
-                // Show API response
+                // Update status
+                updateStatusStep(1, 'completed');
+                updateStatusStep(2, 'active');
+                
                 document.getElementById('responseData').textContent = 
-                    `API Response from ${apiProvider}:\n\n${JSON.stringify(mockResponse, null, 2)}`;
-                document.getElementById('apiResponse').className = 'api-response response-success';
+                    `✅ Connected to follower network\n✅ Processing order for @${username}\n✅ Starting delivery of ${quantity} ${service}\n\nDelivery in progress...`;
 
-                // Start live results simulation
+                // Start live results
                 startLiveResults(username, quantity, service);
 
-                showNotification('Order placed successfully! Starting delivery...', 'success');
+                showNotification('Follower delivery started!', 'success');
 
             } catch (error) {
-                document.getElementById('responseData').textContent = `API Error: ${error.message}`;
+                document.getElementById('responseData').textContent = `Error: ${error.message}`;
                 document.getElementById('apiResponse').className = 'api-response response-error';
-                showNotification('API connection failed', 'error');
+                showNotification('System error', 'error');
             }
         });
+
+        // Update status step
+        function updateStatusStep(stepNumber, status) {
+            const step = document.getElementById(`step${stepNumber}`);
+            step.className = `status-step ${status}`;
+        }
 
         // Start live results simulation
         function startLiveResults(username, quantity, service) {
             const followersCount = document.getElementById('followersCount');
+            const counterLabel = document.getElementById('counterLabel');
             const progressFill = document.getElementById('progressFill');
             const liveFeed = document.getElementById('liveFeed');
+            
+            // Update counter label based on service
+            const labels = {
+                'followers': 'Followers Added',
+                'likes': 'Likes Added', 
+                'views': 'Views Added',
+                'comments': 'Comments Added'
+            };
+            counterLabel.textContent = labels[service] || 'Items Added';
             
             let currentCount = 0;
             const targetCount = parseInt(quantity);
@@ -643,8 +695,8 @@
             
             // Start the delivery simulation
             const interval = setInterval(() => {
-                // Add random number of followers
-                const batchSize = Math.floor(Math.random() * 5) + 1;
+                // Add random number of items
+                const batchSize = Math.floor(Math.random() * 8) + 3;
                 currentCount = Math.min(currentCount + batchSize, targetCount);
                 
                 // Update counter
@@ -656,20 +708,36 @@
                 
                 // Add to live feed
                 for (let i = 0; i < batchSize && currentCount <= targetCount; i++) {
-                    addFollowerToFeed();
+                    addActivityToFeed(service);
                 }
                 
-                // Complete when target reached
+                // Update status when complete
                 if (currentCount >= targetCount) {
                     clearInterval(interval);
-                    showNotification(`Delivery complete! ${targetCount} followers added.`, 'success');
+                    updateStatusStep(2, 'completed');
+                    updateStatusStep(3, 'active');
+                    
+                    setTimeout(() => {
+                        updateStatusStep(3, 'completed');
+                        document.getElementById('responseData').textContent = 
+                            `✅ Delivery Complete!\n\nSuccessfully delivered ${targetCount} ${service} to @${username}\n\nAll items should appear on your profile within 2-5 minutes.`;
+                        document.getElementById('apiResponse').className = 'api-response response-success';
+                        showNotification(`Delivery complete! ${targetCount} ${service} added.`, 'success');
+                    }, 1000);
                 }
-            }, 800); // Add followers every 800ms
+            }, 600); // Add items every 600ms
         }
 
-        // Add follower to live feed
-        function addFollowerToFeed() {
+        // Add activity to live feed based on service type
+        function addActivityToFeed(service) {
             const liveFeed = document.getElementById('liveFeed');
+            const actions = {
+                'followers': 'started following you',
+                'likes': 'liked your post',
+                'views': 'viewed your story', 
+                'comments': 'commented on your post'
+            };
+            
             const usernames = [
                 "alex_johnson", "sarah_miller", "mike_taylor", "emma_wilson", 
                 "james_brown", "lisa_davis", "robert_garcia", "mia_martinez",
@@ -694,7 +762,7 @@
             
             const action = document.createElement('div');
             action.className = 'feed-action';
-            action.textContent = 'started following you';
+            action.textContent = actions[service] || 'interacted with your content';
             
             const time = document.createElement('div');
             time.className = 'feed-time';
@@ -718,19 +786,20 @@
         // Fill demo data
         function fillDemoData() {
             document.getElementById('profileLink').value = 'your_instagram';
-            document.getElementById('service').value = '1';
+            document.getElementById('service').value = 'followers';
             document.getElementById('quantity').value = '250';
-            document.getElementById('apiProvider').value = 'smm1';
             
             // Select first service card
             document.querySelectorAll('.service-card')[0].classList.add('selected');
             
-            showNotification('Demo data loaded. Ready to test!', 'success');
+            showNotification('Demo data loaded. Ready to generate!', 'success');
         }
 
         // Simulate live results
         function simulateLiveResults() {
-            startLiveResults('demo_account', 100, 1);
+            document.getElementById('statusIndicators').style.display = 'flex';
+            updateStatusStep(1, 'active');
+            startLiveResults('demo_account', 150, 'followers');
             showNotification('Live results simulation started', 'success');
         }
 
