@@ -1,4 +1,4 @@
-<vinnet services>
+<VINNET>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -82,34 +82,20 @@
             color: var(--primary);
         }
 
-        .auth-buttons {
-            display: flex;
-            gap: 15px;
-        }
-
-        .btn {
-            padding: 10px 25px;
+        .cta-button {
+            padding: 12px 30px;
             border-radius: 50px;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-        }
-
-        .btn-outline {
-            border: 2px solid var(--primary);
-            color: var(--primary);
-            background: transparent;
-        }
-
-        .btn-primary {
             background: var(--primary);
             color: white;
             border: 2px solid var(--primary);
         }
 
-        .btn:hover {
+        .cta-button:hover {
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
         }
@@ -147,6 +133,16 @@
             background: white;
             color: var(--primary);
             border: 2px solid white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-light:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 255, 255, 0.3);
         }
 
         /* Services Section */
@@ -228,79 +224,6 @@
         }
 
         .service-features i {
-            color: var(--success);
-        }
-
-        /* Pricing Section */
-        .pricing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .pricing-card {
-            background: white;
-            border-radius: 15px;
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-        }
-
-        .pricing-card.popular {
-            border: 2px solid var(--primary);
-            transform: scale(1.05);
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--primary);
-            color: white;
-            padding: 5px 20px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: 600;
-        }
-
-        .pricing-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .price {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 20px 0;
-        }
-
-        .price span {
-            font-size: 1rem;
-            color: var(--gray);
-        }
-
-        .pricing-features {
-            list-style: none;
-            margin: 30px 0;
-            text-align: left;
-        }
-
-        .pricing-features li {
-            padding: 10px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .pricing-features i {
             color: var(--success);
         }
 
@@ -457,6 +380,72 @@
             transition: transform 0.3s ease;
         }
 
+        /* Contact Section */
+        .contact-section {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+        }
+
+        .contact-section p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            text-align: left;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
         /* Footer */
         footer {
             background: var(--dark);
@@ -537,6 +526,10 @@
             .hero h1 {
                 font-size: 2.8rem;
             }
+
+            .contact-form {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 768px) {
@@ -558,10 +551,14 @@
                 align-items: center;
             }
 
-            .btn {
+            .btn-light, .cta-button {
                 width: 100%;
                 max-width: 250px;
                 text-align: center;
+            }
+
+            .contact-section {
+                padding: 40px 20px;
             }
         }
     </style>
@@ -578,15 +575,12 @@
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#pricing">Pricing</a></li>
                     <li><a href="#how-it-works">How It Works</a></li>
                     <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
-            <div class="auth-buttons">
-                <a href="#" class="btn btn-outline">Login</a>
-                <a href="#" class="btn btn-primary">Sign Up</a>
-            </div>
+            <a href="#contact" class="cta-button">Get Started</a>
         </div>
     </header>
 
@@ -596,8 +590,8 @@
             <h1>Boost Your Social Media Presence Instantly</h1>
             <p>Get real followers, likes, views, and comments to grow your social media accounts organically. Start seeing results in minutes!</p>
             <div class="hero-buttons">
-                <a href="#services" class="btn btn-light">Our Services</a>
-                <a href="#pricing" class="btn btn-outline" style="border-color: white; color: white;">View Pricing</a>
+                <a href="#services" class="btn-light">Our Services</a>
+                <a href="#contact" class="cta-button" style="background: transparent; border-color: white;">Get Started Now</a>
             </div>
         </div>
     </section>
@@ -623,7 +617,7 @@
                         <li><i class="fas fa-check"></i> Story Views</li>
                         <li><i class="fas fa-check"></i> 24/7 Support</li>
                     </ul>
-                    <a href="#" class="btn btn-primary">Get Started</a>
+                    <a href="#contact" class="cta-button">Get Started</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
@@ -638,7 +632,7 @@
                         <li><i class="fas fa-check"></i> Shares</li>
                         <li><i class="fas fa-check"></i> Profile Visits</li>
                     </ul>
-                    <a href="#" class="btn btn-primary">Get Started</a>
+                    <a href="#contact" class="cta-button">Get Started</a>
                 </div>
                 <div class="service-card">
                     <div class="service-icon">
@@ -653,56 +647,7 @@
                         <li><i class="fas fa-check"></i> Comments</li>
                         <li><i class="fas fa-check"></i> Watch Time</li>
                     </ul>
-                    <a href="#" class="btn btn-primary">Get Started</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="section" id="pricing">
-        <div class="container">
-            <div class="section-header">
-                <h2>Affordable Pricing Plans</h2>
-                <p>Choose the plan that works best for your needs and budget</p>
-            </div>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Starter</h3>
-                    <div class="price">$9.99<span>/month</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 500 Followers</li>
-                        <li><i class="fas fa-check"></i> 1,000 Likes</li>
-                        <li><i class="fas fa-check"></i> 24/7 Support</li>
-                        <li><i class="fas fa-check"></i> 1 Social Platform</li>
-                        <li><i class="fas fa-times"></i> Priority Delivery</li>
-                    </ul>
-                    <a href="#" class="btn btn-outline">Select Plan</a>
-                </div>
-                <div class="pricing-card popular">
-                    <div class="popular-badge">Most Popular</div>
-                    <h3>Professional</h3>
-                    <div class="price">$24.99<span>/month</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 2,500 Followers</li>
-                        <li><i class="fas fa-check"></i> 5,000 Likes</li>
-                        <li><i class="fas fa-check"></i> 24/7 Support</li>
-                        <li><i class="fas fa-check"></i> 3 Social Platforms</li>
-                        <li><i class="fas fa-check"></i> Priority Delivery</li>
-                    </ul>
-                    <a href="#" class="btn btn-primary">Select Plan</a>
-                </div>
-                <div class="pricing-card">
-                    <h3>Business</h3>
-                    <div class="price">$49.99<span>/month</span></div>
-                    <ul class="pricing-features">
-                        <li><i class="fas fa-check"></i> 10,000 Followers</li>
-                        <li><i class="fas fa-check"></i> 25,000 Likes</li>
-                        <li><i class="fas fa-check"></i> 24/7 Support</li>
-                        <li><i class="fas fa-check"></i> All Social Platforms</li>
-                        <li><i class="fas fa-check"></i> Priority Delivery</li>
-                    </ul>
-                    <a href="#" class="btn btn-outline">Select Plan</a>
+                    <a href="#contact" class="cta-button">Get Started</a>
                 </div>
             </div>
         </div>
@@ -728,8 +673,8 @@
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
-                    <h3>Make Payment</h3>
-                    <p>Complete the secure payment process using your preferred method</p>
+                    <h3>Get Quote</h3>
+                    <p>We'll provide you with a custom quote based on your requirements</p>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
@@ -825,22 +770,62 @@
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">
-                        <span>What payment methods do you accept?</span>
+                        <span>How do I get started?</span>
                         <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
                     </div>
                     <div class="faq-answer">
-                        <p>We accept all major credit cards, PayPal, and various cryptocurrencies for your convenience.</p>
+                        <p>Simply fill out the contact form below with your requirements, and our team will get back to you with a custom quote and next steps.</p>
                     </div>
                 </div>
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Do you offer refunds?</span>
-                        <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="contact-section">
+                <h2>Get Started Today</h2>
+                <p>Fill out the form below and our team will contact you with a custom quote for your social media growth needs</p>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Enter your full name" required>
                     </div>
-                    <div class="faq-answer">
-                        <p>We offer a satisfaction guarantee. If you're not happy with our service, we provide refunds according to our refund policy.</p>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
                     </div>
-                </div>
+                    <div class="form-group">
+                        <label for="platform">Social Media Platform</label>
+                        <select id="platform" required>
+                            <option value="">Select a platform</option>
+                            <option value="instagram">Instagram</option>
+                            <option value="tiktok">TikTok</option>
+                            <option value="youtube">YouTube</option>
+                            <option value="twitter">Twitter</option>
+                            <option value="facebook">Facebook</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service Needed</label>
+                        <select id="service" required>
+                            <option value="">Select a service</option>
+                            <option value="followers">Followers</option>
+                            <option value="likes">Likes</option>
+                            <option value="views">Views</option>
+                            <option value="comments">Comments</option>
+                            <option value="package">Complete Growth Package</option>
+                        </select>
+                    </div>
+                    <div class="form-group full-width">
+                        <label for="message">Additional Details</label>
+                        <textarea id="message" placeholder="Tell us more about your requirements..."></textarea>
+                    </div>
+                    <div class="form-group full-width" style="text-align: center;">
+                        <button type="submit" class="cta-button" style="border: none; cursor: pointer;">Submit Request</button>
+                    </div>
+                </form>
             </div>
         </div>
     </section>
@@ -886,7 +871,6 @@
                         <li><a href="#">FAQ</a></li>
                         <li><a href="#">Terms of Service</a></li>
                         <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Refund Policy</a></li>
                     </ul>
                 </div>
             </div>
@@ -906,17 +890,26 @@
         });
 
         // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
+        document.querySelectorAll('nav a, .hero-buttons a').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                window.scrollTo({
-                    top: targetElement.offsetTop - 80,
-                    behavior: 'smooth'
-                });
+                if (this.getAttribute('href').startsWith('#')) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
             });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your interest! Our team will contact you shortly with a custom quote.');
+            this.reset();
         });
 
         // Add animation on scroll
@@ -935,7 +928,7 @@
         }, observerOptions);
 
         // Observe elements for animation
-        document.querySelectorAll('.service-card, .pricing-card, .step, .testimonial-card').forEach(el => {
+        document.querySelectorAll('.service-card, .step, .testimonial-card').forEach(el => {
             el.style.opacity = 0;
             el.style.transform = 'translateY(20px)';
             el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
