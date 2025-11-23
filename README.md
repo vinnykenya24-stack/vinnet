@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InstantGrow Pro | Social Media Growth Platform</title>
+    <title>InstantGrow Pro | Social Media Growth</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,381 +14,303 @@
         }
 
         :root {
-            --primary: #FF6B6B;
-            --secondary: #4ECDC4;
-            --success: #1DD1A1;
-            --warning: #F9C74F;
-            --error: #FF6B6B;
-            --dark: #2D3436;
-            --light: #F7F9FC;
-            --gray: #636E72;
+            --primary: #6C63FF;
+            --secondary: #4A44C6;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --gray: #6B7280;
         }
 
         body {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            padding: 20px;
             color: var(--dark);
-            overflow-x: hidden;
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
         }
 
         header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 40px;
-            margin-bottom: 40px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .logo {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            margin-bottom: 15px;
+            gap: 15px;
+            margin-bottom: 10px;
         }
 
         .logo i {
-            font-size: 4rem;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: float 3s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+            font-size: 3rem;
+            color: var(--primary);
         }
 
         .logo h1 {
-            font-size: 3.5rem;
+            font-size: 2.8rem;
             background: linear-gradient(45deg, var(--primary), var(--secondary));
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            font-weight: 800;
         }
 
         .tagline {
             color: var(--gray);
-            font-size: 1.4rem;
-            margin-bottom: 25px;
-            font-weight: 500;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
         }
 
         .stats {
             display: flex;
             justify-content: center;
-            gap: 50px;
-            margin-top: 40px;
+            gap: 40px;
+            margin-top: 30px;
             flex-wrap: wrap;
         }
 
         .stat-item {
             text-align: center;
-            padding: 25px;
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 20px;
         }
 
         .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
+            font-size: 2.5rem;
+            font-weight: bold;
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 5px;
         }
 
         .stat-label {
             color: var(--gray);
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1rem;
         }
 
         .platform-selector {
             display: flex;
             justify-content: center;
-            gap: 25px;
-            margin: 50px 0;
+            gap: 20px;
+            margin: 40px 0;
             flex-wrap: wrap;
         }
 
         .platform-tab {
-            padding: 25px 40px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 20px;
+            padding: 20px 30px;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s;
             display: flex;
             align-items: center;
-            gap: 20px;
-            font-weight: 700;
-            font-size: 1.3rem;
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(10px);
+            gap: 15px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            background: white;
         }
 
         .platform-tab.active {
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
         }
 
         .platform-tab.instagram.active {
             border-color: #E1306C;
             color: #E1306C;
-            background: linear-gradient(135deg, rgba(225, 48, 108, 0.1), rgba(255, 255, 255, 0.9));
         }
 
         .platform-tab.facebook.active {
             border-color: #1877F2;
             color: #1877F2;
-            background: linear-gradient(135deg, rgba(24, 119, 242, 0.1), rgba(255, 255, 255, 0.9));
         }
 
         .platform-tab.tiktok.active {
             border-color: #000000;
             color: #000000;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.9));
         }
 
         .platform-tab.youtube.active {
             border-color: #FF0000;
             color: #FF0000;
-            background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 255, 255, 0.9));
         }
 
         .main-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-bottom: 50px;
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
-        @media (max-width: 1100px) {
+        @media (max-width: 968px) {
             .main-content {
                 grid-template-columns: 1fr;
             }
         }
 
         .generator-panel, .results-panel {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 25px;
-            padding: 50px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .panel-header {
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .panel-header h2 {
             color: var(--dark);
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
-            gap: 20px;
-            font-size: 2.2rem;
-            font-weight: 700;
+            gap: 15px;
+            font-size: 1.8rem;
         }
 
         .generator-form {
             display: flex;
             flex-direction: column;
-            gap: 30px;
+            gap: 25px;
         }
 
         .form-group {
-            margin-bottom: 25px;
+            margin-bottom: 20px;
         }
 
         label {
             display: block;
-            margin-bottom: 15px;
-            font-weight: 700;
+            margin-bottom: 12px;
+            font-weight: 600;
             color: var(--dark);
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
         input, select {
             width: 100%;
-            padding: 20px;
-            border: 2px solid rgba(0, 0, 0, 0.1);
-            border-radius: 15px;
-            font-size: 1.2rem;
+            padding: 18px;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            font-size: 1.1rem;
             transition: all 0.3s;
-            background: rgba(255, 255, 255, 0.8);
         }
 
         input:focus, select:focus {
             border-color: var(--primary);
             outline: none;
-            box-shadow: 0 0 0 4px rgba(255, 107, 107, 0.1);
-            transform: translateY(-2px);
+            box-shadow: 0 0 0 4px rgba(108, 99, 255, 0.1);
         }
 
         .btn {
-            padding: 25px 45px;
+            padding: 20px 35px;
             border: none;
-            border-radius: 15px;
-            font-size: 1.3rem;
-            font-weight: 700;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 15px;
         }
 
         .btn-primary {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: white;
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.3);
         }
 
         .btn-primary:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(255, 107, 107, 0.4);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(108, 99, 255, 0.3);
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
         }
 
         .service-card {
-            border: 3px solid rgba(0, 0, 0, 0.1);
-            border-radius: 20px;
-            padding: 30px;
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 25px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.3s;
             text-align: center;
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
         }
 
         .service-card:hover, .service-card.selected {
-            transform: translateY(-12px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
         .service-card.instagram.selected {
             border-color: #E1306C;
-            background: linear-gradient(135deg, rgba(225, 48, 108, 0.1), rgba(255, 255, 255, 0.9));
-        }
-
-        .service-card.facebook.selected {
-            border-color: #1877F2;
-            background: linear-gradient(135deg, rgba(24, 119, 242, 0.1), rgba(255, 255, 255, 0.9));
-        }
-
-        .service-card.tiktok.selected {
-            border-color: #000000;
-            background: linear-gradient(135deg, rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.9));
-        }
-
-        .service-card.youtube.selected {
-            border-color: #FF0000;
-            background: linear-gradient(135deg, rgba(255, 0, 0, 0.1), rgba(255, 255, 255, 0.9));
+            background: rgba(225, 48, 108, 0.05);
         }
 
         .service-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
         }
 
         .service-card.instagram .service-icon {
             color: #E1306C;
         }
 
-        .service-card.facebook .service-icon {
-            color: #1877F2;
-        }
-
-        .service-card.tiktok .service-icon {
-            color: #000000;
-        }
-
-        .service-card.youtube .service-icon {
-            color: #FF0000;
-        }
-
         .service-name {
-            font-weight: 700;
-            margin-bottom: 15px;
-            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
         }
 
         .service-desc {
             color: var(--gray);
-            font-size: 1.1rem;
-            line-height: 1.5;
+            font-size: 1rem;
         }
 
         .live-results {
             background: var(--light);
             border-radius: 20px;
-            padding: 40px;
-            margin-top: 40px;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .results-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
+            padding: 30px;
+            margin-top: 30px;
         }
 
         .counter {
             text-align: center;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
         }
 
         .counter-value {
-            font-size: 5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
         .counter-label {
             color: var(--gray);
-            font-size: 1.4rem;
-            font-weight: 600;
+            font-size: 1.3rem;
         }
 
         .progress-container {
-            margin: 40px 0;
+            margin: 30px 0;
         }
 
         .progress-bar {
-            height: 20px;
-            background: rgba(0, 0, 0, 0.1);
+            height: 15px;
+            background: #e0e0e0;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         .progress-fill {
@@ -396,83 +318,41 @@
             width: 0%;
             transition: width 0.5s ease;
             border-radius: 10px;
-        }
-
-        .instagram .progress-fill {
-            background: linear-gradient(135deg, #E1306C, #F77737);
-        }
-
-        .facebook .progress-fill {
-            background: linear-gradient(135deg, #1877F2, #1877F2);
-        }
-
-        .tiktok .progress-fill {
-            background: linear-gradient(135deg, #000000, #69C9D0, #EE1D52);
-        }
-
-        .youtube .progress-fill {
-            background: linear-gradient(135deg, #FF0000, #FF0000);
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
         }
 
         .live-feed {
-            max-height: 450px;
+            max-height: 400px;
             overflow-y: auto;
-            border: 2px solid rgba(0, 0, 0, 0.1);
+            border: 2px solid #e0e0e0;
             border-radius: 15px;
-            padding: 25px;
-            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
         }
 
         .feed-item {
             display: flex;
             align-items: center;
-            gap: 25px;
-            padding: 20px;
-            border-bottom: 2px solid rgba(0, 0, 0, 0.05);
+            gap: 20px;
+            padding: 18px;
+            border-bottom: 2px solid #f0f0f0;
             animation: slideIn 0.5s ease;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 12px;
-            margin-bottom: 10px;
-            transition: all 0.3s;
-        }
-
-        .feed-item:hover {
-            transform: translateX(5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .feed-item:last-child {
             border-bottom: none;
-            margin-bottom: 0;
         }
 
         .feed-avatar {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-weight: 800;
-            font-size: 1.8rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .instagram .feed-avatar {
-            background: linear-gradient(135deg, #E1306C, #F77737);
-        }
-
-        .facebook .feed-avatar {
-            background: linear-gradient(135deg, #1877F2, #1877F2);
-        }
-
-        .tiktok .feed-avatar {
-            background: linear-gradient(135deg, #000000, #69C9D0, #EE1D52);
-        }
-
-        .youtube .feed-avatar {
-            background: linear-gradient(135deg, #FF0000, #FF0000);
+            font-weight: bold;
+            font-size: 1.5rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
         }
 
         .feed-content {
@@ -480,32 +360,29 @@
         }
 
         .feed-username {
-            font-weight: 700;
-            margin-bottom: 8px;
-            font-size: 1.3rem;
-            color: var(--dark);
+            font-weight: 600;
+            margin-bottom: 5px;
+            font-size: 1.2rem;
         }
 
         .feed-action {
             color: var(--gray);
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .feed-time {
             color: var(--gray);
-            font-size: 1rem;
-            font-weight: 600;
+            font-size: 0.9rem;
         }
 
         .api-response {
-            background: rgba(248, 249, 250, 0.9);
-            border-radius: 20px;
-            padding: 30px;
-            margin-top: 40px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
             font-family: 'Courier New', monospace;
-            font-size: 1.1rem;
+            font-size: 1rem;
             display: none;
-            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .response-success {
@@ -518,60 +395,53 @@
 
         .impact-metrics {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
         }
 
         .metric-card {
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             border: 2px solid transparent;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            backdrop-filter: blur(10px);
+            transition: all 0.3s;
         }
 
         .metric-card:hover {
-            transform: translateY(-10px) scale(1.05);
+            transform: translateY(-5px);
             border-color: var(--primary);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
         }
 
         .metric-value {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 10px;
         }
 
         .metric-label {
             color: var(--gray);
-            font-size: 1.1rem;
-            font-weight: 600;
+            font-size: 1rem;
         }
 
         .status-indicators {
             display: flex;
             justify-content: space-between;
-            margin: 40px 0;
+            margin: 30px 0;
             position: relative;
         }
 
         .status-indicators::before {
             content: '';
             position: absolute;
-            top: 30px;
+            top: 25px;
             left: 10%;
             right: 10%;
-            height: 6px;
-            background: rgba(0, 0, 0, 0.1);
+            height: 4px;
+            background: #E5E7EB;
             z-index: 1;
-            border-radius: 3px;
         }
 
         .status-step {
@@ -581,72 +451,67 @@
         }
 
         .status-icon {
-            width: 60px;
-            height: 60px;
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
-            background: rgba(0, 0, 0, 0.1);
+            background: #E5E7EB;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            font-size: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin: 0 auto 15px;
+            transition: all 0.3s;
+            font-size: 1.3rem;
         }
 
         .status-step.active .status-icon {
             background: var(--primary);
             color: white;
-            transform: scale(1.2);
-            box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+            transform: scale(1.1);
         }
 
         .status-step.completed .status-icon {
             background: var(--success);
             color: white;
-            transform: scale(1.1);
         }
 
         .demo-section {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            padding: 40px;
-            margin-top: 50px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-top: 40px;
             text-align: center;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
         .demo-btn {
             background: var(--warning);
             color: white;
             border: none;
-            padding: 20px 40px;
-            border-radius: 15px;
+            padding: 18px 35px;
+            border-radius: 12px;
             cursor: pointer;
-            font-weight: 700;
-            margin: 20px;
-            font-size: 1.2rem;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 10px 30px rgba(249, 199, 79, 0.3);
+            font-weight: 600;
+            margin: 15px;
+            font-size: 1.1rem;
+            transition: all 0.3s;
         }
 
         .demo-btn:hover {
-            transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(249, 199, 79, 0.4);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
         }
 
         footer {
             text-align: center;
             color: white;
-            margin-top: 60px;
-            padding: 40px;
+            margin-top: 50px;
+            padding: 30px;
         }
 
         @keyframes slideIn {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -654,51 +519,58 @@
             }
         }
 
-        .reality-check {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 25px;
-            padding: 40px;
-            margin-top: 50px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .pulse {
+            animation: pulse 2s infinite;
         }
 
-        .reality-content {
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        .reality-check {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .tips-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
 
-        .reality-card {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 20px;
+        .tip-card {
+            background: var(--light);
+            border-radius: 15px;
             padding: 30px;
             text-align: center;
             transition: all 0.3s;
-            border: 2px solid transparent;
         }
 
-        .reality-card:hover {
+        .tip-card:hover {
             transform: translateY(-8px);
-            border-color: var(--primary);
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .reality-icon {
+        .tip-icon {
             font-size: 3rem;
             color: var(--primary);
             margin-bottom: 20px;
         }
 
-        .reality-title {
+        .tip-title {
             font-size: 1.4rem;
-            font-weight: 700;
+            font-weight: 600;
             margin-bottom: 15px;
             color: var(--dark);
         }
 
-        .reality-desc {
+        .tip-desc {
             color: var(--gray);
             font-size: 1.1rem;
             line-height: 1.6;
@@ -712,19 +584,19 @@
                 <i class="fas fa-bolt"></i>
                 <h1>InstantGrow Pro</h1>
             </div>
-            <p class="tagline">Instant Social Media Growth - See Results in Minutes</p>
+            <p class="tagline">Instant Social Media Growth - Working Simulation</p>
             <div class="stats">
                 <div class="stat-item">
-                    <div class="stat-number">128K+</div>
+                    <div class="stat-number">89,427</div>
                     <div class="stat-label">Followers Delivered Today</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">99.8%</div>
-                    <div class="stat-label">Instant Delivery Rate</div>
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Success Rate</div>
                 </div>
                 <div class="stat-item">
-                    <div class="stat-number">2-5 min</div>
-                    <div class="stat-label">Average Delivery Time</div>
+                    <div class="stat-number">1-3 min</div>
+                    <div class="stat-label">Average Delivery</div>
                 </div>
             </div>
 
@@ -733,17 +605,9 @@
                     <i class="fab fa-instagram"></i>
                     <span>Instagram</span>
                 </div>
-                <div class="platform-tab facebook" data-platform="facebook">
-                    <i class="fab fa-facebook"></i>
-                    <span>Facebook</span>
-                </div>
                 <div class="platform-tab tiktok" data-platform="tiktok">
                     <i class="fab fa-tiktok"></i>
                     <span>TikTok</span>
-                </div>
-                <div class="platform-tab youtube" data-platform="youtube">
-                    <i class="fab fa-youtube"></i>
-                    <span>YouTube</span>
                 </div>
             </div>
         </header>
@@ -757,26 +621,18 @@
 
                 <form class="generator-form" id="generatorForm">
                     <div class="form-group">
-                        <label for="profileLink"><i class="fas fa-user-circle"></i> Your Profile URL</label>
-                        <input type="url" id="profileLink" placeholder="https://instagram.com/yourusername" required>
+                        <label for="profileLink"><i class="fas fa-user-circle"></i> Your Instagram Username</label>
+                        <input type="text" id="profileLink" placeholder="Enter your username (without @)" required>
                         <small style="color: var(--gray); margin-top: 10px; display: block;">
-                            Enter your exact profile URL for instant delivery
+                            Example: yourusername (no @ symbol needed)
                         </small>
                     </div>
 
                     <div class="form-group">
-                        <label for="service"><i class="fas fa-cogs"></i> Service Type</label>
-                        <select id="service" required>
-                            <option value="">Select growth service</option>
-                            <!-- Options populated by JavaScript -->
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="quantity"><i class="fas fa-hashtag"></i> Quantity</label>
-                        <input type="number" id="quantity" placeholder="100-10,000" min="100" max="10000" required>
+                        <label for="quantity"><i class="fas fa-hashtag"></i> Number of Followers</label>
+                        <input type="number" id="quantity" placeholder="100-5000" min="100" max="5000" required>
                         <small style="color: var(--gray); margin-top: 10px; display: block;">
-                            Choose how many followers you want (100-10,000)
+                            Choose how many followers you want (100-5000)
                         </small>
                     </div>
 
@@ -784,19 +640,39 @@
                         <label for="deliverySpeed"><i class="fas fa-tachometer-alt"></i> Delivery Speed</label>
                         <select id="deliverySpeed" required>
                             <option value="">Select delivery speed</option>
-                            <option value="instant">Instant (2-5 minutes)</option>
-                            <option value="fast">Fast (5-15 minutes)</option>
-                            <option value="standard">Standard (15-30 minutes)</option>
+                            <option value="instant">⚡ Instant (1-2 minutes)</option>
+                            <option value="fast">🚀 Fast (2-5 minutes)</option>
+                            <option value="standard">📦 Standard (5-10 minutes)</option>
                         </select>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">
-                        <i class="fas fa-bolt"></i> Generate Followers Instantly
+                    <button type="submit" class="btn btn-primary pulse">
+                        <i class="fas fa-rocket"></i> Generate Followers Instantly
                     </button>
                 </form>
 
-                <div class="services-grid" id="servicesGrid">
-                    <!-- Services populated by JavaScript -->
+                <div class="services-grid">
+                    <div class="service-card instagram selected" onclick="selectService('followers')">
+                        <div class="service-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="service-name">Real Followers</div>
+                        <div class="service-desc">Active Instagram users that engage with your content</div>
+                    </div>
+                    <div class="service-card instagram" onclick="selectService('likes')">
+                        <div class="service-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="service-name">Premium Likes</div>
+                        <div class="service-desc">High-quality likes on your posts</div>
+                    </div>
+                    <div class="service-card instagram" onclick="selectService('views')">
+                        <div class="service-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <div class="service-name">Story Views</div>
+                        <div class="service-desc">24-hour story engagement</div>
+                    </div>
                 </div>
             </div>
 
@@ -811,25 +687,25 @@
                         <div class="status-icon">
                             <i class="fas fa-search"></i>
                         </div>
-                        <div>Verifying Profile</div>
+                        <div>Verifying</div>
                     </div>
                     <div class="status-step" id="step2">
                         <div class="status-icon">
                             <i class="fas fa-bolt"></i>
                         </div>
-                        <div>Starting Delivery</div>
+                        <div>Starting</div>
                     </div>
                     <div class="status-step" id="step3">
                         <div class="status-icon">
                             <i class="fas fa-rocket"></i>
                         </div>
-                        <div>Mass Delivery</div>
+                        <div>Delivering</div>
                     </div>
                     <div class="status-step" id="step4">
                         <div class="status-icon">
                             <i class="fas fa-check"></i>
                         </div>
-                        <div>Completed</div>
+                        <div>Complete</div>
                     </div>
                 </div>
 
@@ -840,19 +716,19 @@
                     </div>
                     <div class="metric-card">
                         <div class="metric-value" id="metricEngagement">0%</div>
-                        <div class="metric-label">Engagement Boost</div>
+                        <div class="metric-label">Engagement Rate</div>
                     </div>
                     <div class="metric-card">
                         <div class="metric-value" id="metricReach">0</div>
-                        <div class="metric-label">Reach Increased</div>
+                        <div class="metric-label">Profile Reach</div>
                     </div>
                     <div class="metric-card">
                         <div class="metric-value" id="metricGrowth">+0%</div>
-                        <div class="metric-label">Profile Growth</div>
+                        <div class="metric-label">Growth Today</div>
                     </div>
                 </div>
 
-                <div class="live-results instagram" id="liveResults">
+                <div class="live-results">
                     <div class="counter">
                         <div class="counter-value" id="followersCount">0</div>
                         <div class="counter-label" id="counterLabel">Followers Delivered</div>
@@ -878,172 +754,71 @@
 
                 <div class="api-response" id="apiResponse">
                     <h4><i class="fas fa-terminal"></i> Delivery System Status</h4>
-                    <pre id="responseData">Ready to generate instant followers...</pre>
+                    <pre id="responseData">Ready to generate instant followers. Enter your username and click Generate!</pre>
                 </div>
             </div>
         </div>
 
         <div class="reality-check">
             <h2 style="text-align: center; margin-bottom: 30px; color: var(--dark);">
-                <i class="fas fa-info-circle"></i> Important Reality Check
+                <i class="fas fa-info-circle"></i> Important: This is a Simulation
             </h2>
-            <div class="reality-content">
-                <div class="reality-card">
-                    <div class="reality-icon">
+            <div class="tips-grid">
+                <div class="tip-card">
+                    <div class="tip-icon">
                         <i class="fas fa-shield-alt"></i>
                     </div>
-                    <div class="reality-title">Platform Security</div>
-                    <div class="reality-desc">
-                        Social media platforms have advanced systems to detect and remove artificial followers. Instant follower services often violate platform terms.
+                    <div class="tip-title">Platform Security</div>
+                    <div class="tip-desc">
+                        Real social media platforms have advanced security that prevents instant follower generation. This simulation shows what services promise, not what they can actually deliver.
                     </div>
                 </div>
-                <div class="reality-card">
-                    <div class="reality-icon">
+                <div class="tip-card">
+                    <div class="tip-icon">
                         <i class="fas fa-clock"></i>
                     </div>
-                    <div class="reality-title">Temporary Results</div>
-                    <div class="reality-desc">
-                        Artificially generated followers are often removed within days or weeks, wasting your investment and potentially harming your account.
+                    <div class="tip-title">Real Growth Takes Time</div>
+                    <div class="tip-desc">
+                        Authentic growth comes from quality content, genuine engagement, and building real relationships with your audience over time.
                     </div>
                 </div>
-                <div class="reality-card">
-                    <div class="reality-icon">
+                <div class="tip-card">
+                    <div class="tip-icon">
                         <i class="fas fa-users"></i>
                     </div>
-                    <div class="reality-title">Real Growth Takes Time</div>
-                    <div class="reality-desc">
-                        Authentic growth comes from quality content, genuine engagement, and building real relationships with your audience over time.
+                    <div class="tip-title">Focus on Real Engagement</div>
+                    <div class="tip-desc">
+                        Instead of fake followers, focus on creating valuable content that resonates with real people and builds genuine community.
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="demo-section">
-            <h3>Ready to See Instant Growth?</h3>
-            <p>Test our system with a demo profile to see how instant delivery works</p>
+            <h3>Ready to See the Simulation?</h3>
+            <p>Test the instant follower generator with demo data</p>
             <button class="demo-btn" onclick="fillDemoData()">
-                <i class="fas fa-vial"></i> Load Demo Profile
+                <i class="fas fa-vial"></i> Load Demo Data
             </button>
             <button class="demo-btn" onclick="startInstantDelivery()" style="background: var(--success);">
-                <i class="fas fa-play"></i> Start Instant Delivery
+                <i class="fas fa-play"></i> Start Simulation
             </button>
         </div>
 
         <footer>
-            <p>&copy; 2023 InstantGrow Pro. This is a demonstration of instant follower delivery simulation.</p>
+            <p>&copy; 2023 InstantGrow Pro. This is a working simulation for demonstration purposes.</p>
             <p style="margin-top: 20px; font-size: 1.1rem; opacity: 0.9;">
-                For real social media growth, focus on authentic content and genuine audience engagement
+                Real social media growth requires authentic engagement and quality content
             </p>
         </footer>
     </div>
 
     <script>
-        // Platform configuration
-        const platforms = {
-            instagram: {
-                name: 'Instagram',
-                color: '#E1306C',
-                services: [
-                    { id: 'real_followers', name: 'Real Followers', desc: 'Active Instagram users', icon: 'fas fa-users' },
-                    { id: 'premium_likes', name: 'Premium Likes', desc: 'High-quality post engagement', icon: 'fas fa-heart' },
-                    { id: 'story_views', name: 'Story Views', desc: '24-hour story engagement', icon: 'fas fa-eye' },
-                    { id: 'auto_comments', name: 'Auto Comments', desc: 'Genuine-looking comments', icon: 'fas fa-comment' }
-                ],
-                placeholder: 'https://instagram.com/username'
-            },
-            facebook: {
-                name: 'Facebook',
-                color: '#1877F2',
-                services: [
-                    { id: 'page_likes', name: 'Page Likes', desc: 'Real Facebook users', icon: 'fas fa-thumbs-up' },
-                    { id: 'post_engagement', name: 'Post Engagement', desc: 'Likes and shares', icon: 'fas fa-share' },
-                    { id: 'video_views', name: 'Video Views', desc: 'Organic video engagement', icon: 'fas fa-play' },
-                    { id: 'group_members', name: 'Group Members', desc: 'Active group participants', icon: 'fas fa-users' }
-                ],
-                placeholder: 'https://facebook.com/pagename'
-            },
-            tiktok: {
-                name: 'TikTok',
-                color: '#000000',
-                services: [
-                    { id: 'tiktok_followers', name: 'TikTok Followers', desc: 'Active TikTok users', icon: 'fas fa-users' },
-                    { id: 'video_likes', name: 'Video Likes', desc: 'Genuine video engagement', icon: 'fas fa-heart' },
-                    { id: 'video_views', name: 'Video Views', desc: 'Organic view count', icon: 'fas fa-eye' },
-                    { id: 'shares', name: 'Video Shares', desc: 'Content sharing', icon: 'fas fa-share' }
-                ],
-                placeholder: 'https://tiktok.com/@username'
-            },
-            youtube: {
-                name: 'YouTube',
-                color: '#FF0000',
-                services: [
-                    { id: 'subscribers', name: 'Subscribers', desc: 'Active channel subscribers', icon: 'fas fa-users' },
-                    { id: 'video_likes', name: 'Video Likes', desc: 'Genuine video engagement', icon: 'fas fa-thumbs-up' },
-                    { id: 'video_views', name: 'Video Views', desc: 'Organic view count', icon: 'fas fa-eye' },
-                    { id: 'comments', name: 'Comments', desc: 'Engaging discussions', icon: 'fas fa-comment' }
-                ],
-                placeholder: 'https://youtube.com/c/channelname'
-            }
-        };
-
-        let currentPlatform = 'instagram';
-
-        // Initialize platform
-        function initializePlatform(platformId) {
-            currentPlatform = platformId;
-            const platform = platforms[platformId];
-            
-            // Update platform tabs
-            document.querySelectorAll('.platform-tab').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            document.querySelector(`.platform-tab.${platformId}`).classList.add('active');
-            
-            // Update results panel styling
-            document.getElementById('liveResults').className = `live-results ${platformId}`;
-            
-            // Update placeholder
-            document.getElementById('profileLink').placeholder = platform.placeholder;
-            
-            // Update services dropdown
-            const serviceSelect = document.getElementById('service');
-            serviceSelect.innerHTML = '<option value="">Select growth service</option>';
-            platform.services.forEach(service => {
-                const option = document.createElement('option');
-                option.value = service.id;
-                option.textContent = service.name;
-                serviceSelect.appendChild(option);
-            });
-            
-            // Update services grid
-            const servicesGrid = document.getElementById('servicesGrid');
-            servicesGrid.innerHTML = '';
-            platform.services.forEach(service => {
-                const serviceCard = document.createElement('div');
-                serviceCard.className = `service-card ${platformId}`;
-                serviceCard.onclick = () => selectService(service.id, service.name);
-                serviceCard.innerHTML = `
-                    <div class="service-icon">
-                        <i class="${service.icon}"></i>
-                    </div>
-                    <div class="service-name">${service.name}</div>
-                    <div class="service-desc">${service.desc}</div>
-                `;
-                servicesGrid.appendChild(serviceCard);
-            });
-        }
-
-        // Platform tab selection
-        document.querySelectorAll('.platform-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                const platformId = this.getAttribute('data-platform');
-                initializePlatform(platformId);
-            });
-        });
+        let currentService = 'followers';
 
         // Service selection
-        function selectService(serviceId, serviceName) {
-            document.getElementById('service').value = serviceId;
+        function selectService(serviceId) {
+            currentService = serviceId;
             
             // Update all service cards
             document.querySelectorAll('.service-card').forEach(card => {
@@ -1053,26 +828,30 @@
             // Highlight selected card
             event.currentTarget.classList.add('selected');
             
-            showNotification(`Selected: ${serviceName}`, 'success');
+            const serviceNames = {
+                'followers': 'Real Followers',
+                'likes': 'Premium Likes', 
+                'views': 'Story Views'
+            };
+            
+            showNotification(`Selected: ${serviceNames[serviceId]}`, 'success');
         }
 
-        // Form submission - Instant Delivery Simulation
+        // Form submission - Working Simulation
         document.getElementById('generatorForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const profileLink = document.getElementById('profileLink').value.trim();
-            const service = document.getElementById('service').value;
+            const username = document.getElementById('profileLink').value.trim();
             const quantity = document.getElementById('quantity').value;
             const deliverySpeed = document.getElementById('deliverySpeed').value;
             
-            if (!profileLink || !service || !quantity || !deliverySpeed) {
-                showNotification('Please fill all fields to start instant delivery', 'error');
+            if (!username || !quantity || !deliverySpeed) {
+                showNotification('Please fill all fields to start delivery', 'error');
                 return;
             }
 
-            // Validate URL format
-            if (!isValidUrl(profileLink, currentPlatform)) {
-                showNotification('Please enter a valid URL for the selected platform', 'error');
+            if (username.includes('@')) {
+                showNotification('Please enter username without @ symbol', 'error');
                 return;
             }
 
@@ -1089,39 +868,32 @@
 
             // Show delivery status
             document.getElementById('responseData').textContent = 
-                `🚀 Starting Instant Delivery System\n📱 Platform: ${platforms[currentPlatform].name}\n🎯 Service: ${service}\n📦 Quantity: ${quantity}\n⚡ Speed: ${deliverySpeed}\n\nInitializing delivery network...`;
+                `🔍 Verifying Instagram profile: @${username}\n⚡ Delivery speed: ${deliverySpeed}\n🎯 Service: ${currentService}\n📦 Quantity: ${quantity}\n\nStarting delivery system...`;
 
             try {
                 // Simulate profile verification
-                await new Promise(resolve => setTimeout(resolve, 2000));
+                await new Promise(resolve => setTimeout(resolve, 1500));
                 updateStatusStep(1, 'completed');
                 updateStatusStep(2, 'active');
                 
                 document.getElementById('responseData').textContent = 
-                    `✅ Profile Verified: ${profileLink}\n✅ Network Connection Established\n✅ Delivery Resources Allocated\n\nStarting instant follower delivery...`;
+                    `✅ Profile Verified: @${username}\n✅ Instagram API Connected\n✅ Delivery Network Ready\n\nStarting instant follower delivery...`;
 
-                // Start instant delivery simulation
-                startInstantDelivery(profileLink, quantity, service, deliverySpeed);
+                await new Promise(resolve => setTimeout(resolve, 1000));
+                updateStatusStep(2, 'completed');
+                updateStatusStep(3, 'active');
 
-                showNotification('Instant delivery started! Followers arriving now...', 'success');
+                // Start the working simulation
+                startWorkingSimulation(username, quantity, currentService, deliverySpeed);
+
+                showNotification('Delivery started successfully!', 'success');
 
             } catch (error) {
                 document.getElementById('responseData').textContent = `Delivery Error: ${error.message}`;
                 document.getElementById('apiResponse').className = 'api-response response-error';
-                showNotification('Delivery failed to start', 'error');
+                showNotification('Delivery failed', 'error');
             }
         });
-
-        // URL validation
-        function isValidUrl(url, platform) {
-            const patterns = {
-                instagram: /^(https?:\/\/)?(www\.)?instagram\.com\/[a-zA-Z0-9._]+\/?$/,
-                facebook: /^(https?:\/\/)?(www\.)?facebook\.com\/[a-zA-Z0-9._]+\/?$/,
-                tiktok: /^(https?:\/\/)?(www\.)?tiktok\.com\/@[a-zA-Z0-9._]+\/?$/,
-                youtube: /^(https?:\/\/)?(www\.)?(youtube\.com\/(c\/|channel\/|@)?[a-zA-Z0-9._-]+|youtu\.be\/[a-zA-Z0-9._-]+)\/?$/
-            };
-            return patterns[platform].test(url);
-        }
 
         // Update status step
         function updateStatusStep(stepNumber, status) {
@@ -1129,8 +901,8 @@
             step.className = `status-step ${status}`;
         }
 
-        // Start instant delivery simulation
-        function startInstantDelivery(profileLink, quantity, service, speed) {
+        // Start working simulation
+        function startWorkingSimulation(username, quantity, service, speed) {
             const followersCount = document.getElementById('followersCount');
             const counterLabel = document.getElementById('counterLabel');
             const progressFill = document.getElementById('progressFill');
@@ -1138,15 +910,23 @@
             
             // Set delivery speed
             const speedMultipliers = {
-                instant: 100,
-                fast: 200,
-                standard: 400
+                instant: 80,
+                fast: 150,
+                standard: 300
             };
             
-            const deliveryInterval = speedMultipliers[speed] || 200;
+            const deliveryInterval = speedMultipliers[speed] || 150;
             
             let currentCount = 0;
             const targetCount = parseInt(quantity);
+            
+            // Update counter label
+            const serviceLabels = {
+                'followers': 'Followers Delivered',
+                'likes': 'Likes Added',
+                'views': 'Views Added'
+            };
+            counterLabel.textContent = serviceLabels[service] || 'Items Delivered';
             
             // Clear previous results
             liveFeed.innerHTML = '';
@@ -1158,8 +938,8 @@
             
             // Start the delivery simulation
             const interval = setInterval(() => {
-                // Add followers based on speed
-                const batchSize = Math.floor(Math.random() * 20) + 10;
+                // Add items based on speed
+                const batchSize = Math.floor(Math.random() * 15) + 8;
                 currentCount = Math.min(currentCount + batchSize, targetCount);
                 
                 // Update counter
@@ -1171,17 +951,11 @@
                 
                 // Add to live feed
                 for (let i = 0; i < batchSize && currentCount <= targetCount; i++) {
-                    addFollowerToFeed(service);
+                    addActivityToFeed(service);
                 }
                 
                 // Update impact metrics
                 updateImpactMetrics(currentCount, targetCount);
-                
-                // Update status when mass delivery starts
-                if (currentCount > targetCount * 0.3) {
-                    updateStatusStep(2, 'completed');
-                    updateStatusStep(3, 'active');
-                }
                 
                 // Complete when target reached
                 if (currentCount >= targetCount) {
@@ -1192,43 +966,32 @@
                     setTimeout(() => {
                         updateStatusStep(4, 'completed');
                         document.getElementById('responseData').textContent = 
-                            `🎉 INSTANT DELIVERY COMPLETE!\n\n✅ Successfully delivered ${targetCount} ${service}\n✅ To: ${profileLink}\n✅ Time: ${Math.floor(targetCount/deliveryInterval)} seconds\n\n📊 Delivery Summary:\n• ${targetCount} followers added instantly\n• Engagement rate increased significantly\n• Profile visibility maximized\n• All followers are live on your profile!\n\nYour ${platforms[currentPlatform].name} growth is complete!`;
+                            `🎉 DELIVERY COMPLETE!\n\n✅ Successfully delivered ${targetCount} ${service}\n✅ To: @${username}\n✅ Time: ${Math.floor(targetCount/deliveryInterval)} seconds\n\n📊 Simulation Results:\n• ${targetCount} ${service} added\n• Profile engagement increased\n• Account visibility boosted\n• All items delivered successfully!\n\nThis simulation demonstrates what instant follower services typically promise.`;
                         document.getElementById('apiResponse').className = 'api-response response-success';
-                        showNotification(`Delivery complete! ${targetCount} followers added.`, 'success');
+                        showNotification(`Simulation complete! ${targetCount} ${service} delivered.`, 'success');
                     }, 1000);
                 }
             }, deliveryInterval);
         }
 
-        // Add follower to live feed
-        function addFollowerToFeed(service) {
+        // Add activity to live feed
+        function addActivityToFeed(service) {
             const liveFeed = document.getElementById('liveFeed');
-            const platform = platforms[currentPlatform];
             
             const actions = {
-                real_followers: 'started following you',
-                premium_likes: 'liked your post',
-                story_views: 'viewed your story',
-                auto_comments: 'commented on your post',
-                page_likes: 'liked your page',
-                post_engagement: 'engaged with your post',
-                video_views: 'watched your video',
-                group_members: 'joined your group',
-                tiktok_followers: 'started following you',
-                video_likes: 'liked your video',
-                shares: 'shared your content',
-                subscribers: 'subscribed to your channel'
+                'followers': 'started following you',
+                'likes': 'liked your post',
+                'views': 'viewed your story'
             };
             
             const usernames = [
                 "alex_johnson", "sarah_miller", "mike_taylor", "emma_wilson", 
                 "james_brown", "lisa_davis", "robert_garcia", "mia_martinez",
-                "david_lee", "sophia_rodriguez", "chris_moore", "olivia_clark",
-                "ryan_hernandez", "ava_young", "matthew_king", "isabella_scott"
+                "david_lee", "sophia_rodriguez", "chris_moore", "olivia_clark"
             ];
             
             const username = usernames[Math.floor(Math.random() * usernames.length)];
-            const action = actions[service] || 'started following you';
+            const action = actions[service] || 'interacted with your content';
             
             const feedItem = document.createElement('div');
             feedItem.className = 'feed-item';
@@ -1262,7 +1025,7 @@
             liveFeed.insertBefore(feedItem, liveFeed.firstChild);
             
             // Limit feed items
-            if (liveFeed.children.length > 10) {
+            if (liveFeed.children.length > 8) {
                 liveFeed.removeChild(liveFeed.lastChild);
             }
         }
@@ -1280,36 +1043,23 @@
             const progress = currentCount / targetCount;
             
             document.getElementById('metricFollowers').textContent = currentCount;
-            document.getElementById('metricEngagement').textContent = Math.floor(progress * 25) + '%';
-            document.getElementById('metricReach').textContent = Math.floor(progress * 5000);
-            document.getElementById('metricGrowth').textContent = '+' + Math.floor(progress * 35) + '%';
+            document.getElementById('metricEngagement').textContent = Math.floor(progress * 20) + '%';
+            document.getElementById('metricReach').textContent = Math.floor(progress * 3500);
+            document.getElementById('metricGrowth').textContent = '+' + Math.floor(progress * 30) + '%';
         }
 
         // Fill demo data
         function fillDemoData() {
-            const demoUrls = {
-                instagram: 'https://instagram.com/your_profile',
-                facebook: 'https://facebook.com/your_page',
-                tiktok: 'https://tiktok.com/@your_username',
-                youtube: 'https://youtube.com/c/your_channel'
-            };
-            
-            document.getElementById('profileLink').value = demoUrls[currentPlatform];
-            document.getElementById('service').value = platforms[currentPlatform].services[0].id;
+            document.getElementById('profileLink').value = 'yourinstagram';
             document.getElementById('quantity').value = '1000';
             document.getElementById('deliverySpeed').value = 'instant';
             
-            // Select first service card
-            document.querySelectorAll('.service-card')[0].classList.add('selected');
-            
-            showNotification(`Demo ${platforms[currentPlatform].name} profile loaded`, 'success');
+            showNotification('Demo data loaded successfully!', 'success');
         }
 
-        // Global start instant delivery
+        // Global start simulation
         function startInstantDelivery() {
-            const profileLink = document.getElementById('profileLink').value || 
-                               `https://${currentPlatform}.com/your_profile`;
-            const service = document.getElementById('service').value || platforms[currentPlatform].services[0].id;
+            const username = document.getElementById('profileLink').value || 'yourinstagram';
             const quantity = document.getElementById('quantity').value || '500';
             const speed = document.getElementById('deliverySpeed').value || 'instant';
             
@@ -1317,9 +1067,10 @@
             document.getElementById('impactMetrics').style.display = 'grid';
             updateStatusStep(1, 'active');
             updateStatusStep(2, 'active');
+            updateStatusStep(3, 'active');
             
-            startInstantDelivery(profileLink, quantity, service, speed);
-            showNotification('Instant delivery simulation started!', 'success');
+            startWorkingSimulation(username, quantity, currentService, speed);
+            showNotification('Simulation started successfully!', 'success');
         }
 
         // Show notification
@@ -1327,26 +1078,25 @@
             const notification = document.createElement('div');
             notification.style.cssText = `
                 position: fixed;
-                top: 40px;
-                right: 40px;
-                padding: 25px 35px;
-                border-radius: 15px;
+                top: 30px;
+                right: 30px;
+                padding: 20px 30px;
+                border-radius: 12px;
                 color: white;
-                font-weight: 700;
+                font-weight: 600;
                 z-index: 10000;
                 animation: slideIn 0.4s ease;
-                max-width: 450px;
-                font-size: 1.2rem;
+                max-width: 400px;
+                font-size: 1.1rem;
                 box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-                backdrop-filter: blur(10px);
             `;
             
             if (type === 'success') {
-                notification.style.background = 'linear-gradient(135deg, var(--success), var(--secondary))';
+                notification.style.background = 'var(--success)';
             } else if (type === 'error') {
-                notification.style.background = 'linear-gradient(135deg, var(--error), #FF8E8E)';
+                notification.style.background = 'var(--error)';
             } else {
-                notification.style.background = 'linear-gradient(135deg, var(--warning), #F9D976)';
+                notification.style.background = 'var(--warning)';
             }
             
             notification.textContent = message;
@@ -1354,11 +1104,8 @@
             
             setTimeout(() => {
                 notification.remove();
-            }, 5000);
+            }, 4000);
         }
-
-        // Initialize the platform
-        initializePlatform('instagram');
 
         // Add CSS for animations
         const style = document.createElement('style');
