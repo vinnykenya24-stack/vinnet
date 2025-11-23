@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SocialBoost Pro | Real API Integration</title>
+    <title>SocialBoost Pro | Free Follower Generator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -16,132 +16,85 @@
         :root {
             --primary: #6C63FF;
             --secondary: #4A44C6;
-            --accent: #FF6584;
-            --dark: #2A2D3E;
-            --light: #F7F9FC;
-            --gray: #8C8E9A;
-            --success: #2ECC71;
-            --warning: #F39C12;
-            --error: #E74C3C;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --error: #EF4444;
+            --dark: #1F2937;
+            --light: #F9FAFB;
+            --gray: #6B7280;
         }
 
         body {
-            background-color: var(--light);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
             color: var(--dark);
-            line-height: 1.6;
         }
 
         .container {
-            width: 100%;
-            max-width: 1200px;
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 0 20px;
         }
 
-        /* Header Styles */
         header {
             background: white;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 10px;
         }
 
         .logo i {
-            font-size: 2rem;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
+            font-size: 2.5rem;
             color: var(--primary);
         }
 
-        .cta-button {
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            border: 2px solid var(--primary);
+        .logo h1 {
+            font-size: 2.2rem;
+            color: var(--dark);
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        .tagline {
+            color: var(--gray);
+            font-size: 1.1rem;
         }
 
-        /* Hero Section */
-        .hero {
-            padding: 100px 0;
-            background: linear-gradient(135deg, #6C63FF 0%, #4A44C6 100%);
-            color: white;
-            text-align: center;
-            border-radius: 0 0 30px 30px;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 40px;
-            opacity: 0.9;
-        }
-
-        /* API Configuration Section */
-        .api-config {
+        .api-panel {
             background: white;
             border-radius: 15px;
             padding: 30px;
-            margin: 40px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
-        .api-config h2 {
-            margin-bottom: 20px;
+        .panel-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .panel-header h2 {
             color: var(--dark);
+            margin-bottom: 10px;
+        }
+
+        .panel-header p {
+            color: var(--gray);
         }
 
         .api-form {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 20px;
+            margin-bottom: 30px;
         }
 
         .form-group {
@@ -152,86 +105,112 @@
             grid-column: 1 / -1;
         }
 
-        .form-group label {
+        label {
             display: block;
             margin-bottom: 8px;
-            font-weight: 500;
+            font-weight: 600;
             color: var(--dark);
         }
 
-        .form-group input, .form-group select {
+        input, select {
             width: 100%;
             padding: 12px 15px;
-            border: 2px solid #ddd;
+            border: 2px solid #E5E7EB;
             border-radius: 8px;
             font-size: 1rem;
             transition: border-color 0.3s;
         }
 
-        .form-group input:focus, .form-group select:focus {
+        input:focus, select:focus {
             border-color: var(--primary);
             outline: none;
         }
 
-        /* Order Status Section */
-        .order-status {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin: 40px 0;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            display: none;
-        }
-
-        .status-header {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-
-        .status-indicators {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 40px;
-            position: relative;
-        }
-
-        .status-indicators::before {
-            content: '';
-            position: absolute;
-            top: 20px;
-            left: 10%;
-            right: 10%;
-            height: 3px;
-            background: #eee;
-            z-index: 1;
-        }
-
-        .status-step {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-        }
-
-        .status-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #eee;
-            display: flex;
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 10px;
-            transition: all 0.3s ease;
+            gap: 10px;
         }
 
-        .status-step.active .status-icon {
+        .btn-primary {
             background: var(--primary);
             color: white;
         }
 
-        .status-step.completed .status-icon {
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        .btn-success {
             background: var(--success);
             color: white;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .service-card {
+            border: 2px solid #E5E7EB;
+            border-radius: 10px;
+            padding: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .service-card:hover, .service-card.selected {
+            border-color: var(--primary);
+            background: rgba(108, 99, 255, 0.05);
+        }
+
+        .service-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .service-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .service-info h3 {
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .service-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .service-price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--success);
+            text-align: center;
+            margin-top: 10px;
         }
 
         .api-response {
@@ -250,88 +229,99 @@
             border-left: 4px solid var(--error);
         }
 
-        .response-warning {
-            border-left: 4px solid var(--warning);
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
         }
 
-        /* Services Section */
-        .services-section {
-            padding: 80px 0;
+        .status-indicators {
+            display: flex;
+            justify-content: space-between;
+            margin: 30px 0;
+            position: relative;
         }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+        .status-indicators::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: #E5E7EB;
+            z-index: 1;
         }
 
-        .service-card {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
+        .status-step {
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease;
+            position: relative;
+            z-index: 2;
         }
 
-        .service-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .service-icon {
-            width: 70px;
-            height: 70px;
-            background: rgba(108, 99, 255, 0.1);
+        .status-icon {
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
+            background: #E5E7EB;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 20px;
-            font-size: 1.8rem;
-            color: var(--primary);
+            margin: 0 auto 10px;
+            transition: all 0.3s;
         }
 
-        .service-card h3 {
+        .status-step.active .status-icon {
+            background: var(--primary);
+            color: white;
+        }
+
+        .status-step.completed .status-icon {
+            background: var(--success);
+            color: white;
+        }
+
+        .demo-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .demo-section h3 {
             margin-bottom: 15px;
             color: var(--dark);
         }
 
-        .service-card p {
-            color: var(--gray);
-            margin-bottom: 20px;
+        .demo-btn {
+            background: var(--warning);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
         }
 
-        .service-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 20px;
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .header-container {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            nav ul {
-                gap: 15px;
-            }
-
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-
             .api-form {
                 grid-template-columns: 1fr;
             }
-
+            
             .status-indicators {
                 flex-direction: column;
-                gap: 30px;
+                gap: 20px;
             }
-
+            
             .status-indicators::before {
                 display: none;
             }
@@ -339,43 +329,29 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <div class="container header-container">
+    <div class="container">
+        <header>
             <div class="logo">
                 <i class="fas fa-rocket"></i>
-                <span>SocialBoost Pro</span>
+                <h1>SocialBoost Pro</h1>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#order">Place Order</a></li>
-                    <li><a href="#services">Services</a></li>
-                </ul>
-            </nav>
-            <a href="#order" class="cta-button">Place Order</a>
-        </div>
-    </header>
+            <p class="tagline">Free Social Media Growth - No Payment Required</p>
+        </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="container">
-            <h1>Real Social Media Growth API</h1>
-            <p>Connect to actual follower generation services with real API integration</p>
-        </div>
-    </section>
+        <div class="api-panel">
+            <div class="panel-header">
+                <h2>Generate Followers & Likes Instantly</h2>
+                <p>Connect directly to our SMM panel API - Completely Free</p>
+            </div>
 
-    <!-- API Configuration Section -->
-    <section class="container" id="order">
-        <div class="api-config">
-            <h2>Place Your Order</h2>
-            <form class="api-form" id="orderForm">
+            <form class="api-form" id="apiForm">
                 <div class="form-group">
-                    <label for="apiKey">API Key</label>
+                    <label for="apiKey"><i class="fas fa-key"></i> API Key</label>
                     <input type="text" id="apiKey" placeholder="Enter your API key" required>
                 </div>
+
                 <div class="form-group">
-                    <label for="service">Service Type</label>
+                    <label for="service"><i class="fas fa-cog"></i> Service Type</label>
                     <select id="service" required>
                         <option value="">Select a service</option>
                         <option value="1">Instagram Followers</option>
@@ -386,29 +362,67 @@
                         <option value="6">YouTube Subscribers</option>
                     </select>
                 </div>
+
                 <div class="form-group">
-                    <label for="profileLink">Profile/Post URL</label>
+                    <label for="profileLink"><i class="fas fa-link"></i> Profile URL</label>
                     <input type="text" id="profileLink" placeholder="https://instagram.com/username" required>
                 </div>
+
                 <div class="form-group">
-                    <label for="quantity">Quantity</label>
+                    <label for="quantity"><i class="fas fa-hashtag"></i> Quantity</label>
                     <input type="number" id="quantity" placeholder="100" min="10" max="10000" required>
                 </div>
+
                 <div class="form-group full-width">
-                    <button type="submit" class="cta-button" style="width: 100%;">Place Order via API</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-bolt"></i> Generate Now - Free
+                    </button>
                 </div>
             </form>
-        </div>
 
-        <!-- Order Status Section -->
-        <div class="order-status" id="orderStatus">
-            <div class="status-header">
-                <h2>Order Status</h2>
-                <p>Tracking your API request in real-time</p>
+            <div class="services-grid">
+                <div class="service-card" onclick="selectService(1, 'Instagram Followers')">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fab fa-instagram"></i>
+                        </div>
+                        <div class="service-info">
+                            <h3>Instagram Followers</h3>
+                            <p>Real, active followers</p>
+                        </div>
+                    </div>
+                    <div class="service-price">FREE</div>
+                </div>
+
+                <div class="service-card" onclick="selectService(2, 'Instagram Likes')">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <div class="service-info">
+                            <h3>Instagram Likes</h3>
+                            <p>Engagement on your posts</p>
+                        </div>
+                    </div>
+                    <div class="service-price">FREE</div>
+                </div>
+
+                <div class="service-card" onclick="selectService(4, 'TikTok Followers')">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="fab fa-tiktok"></i>
+                        </div>
+                        <div class="service-info">
+                            <h3>TikTok Followers</h3>
+                            <p>Grow your TikTok presence</p>
+                        </div>
+                    </div>
+                    <div class="service-price">FREE</div>
+                </div>
             </div>
-            
-            <div class="status-indicators">
-                <div class="status-step active" id="step1">
+
+            <div class="status-indicators" id="statusIndicators" style="display: none;">
+                <div class="status-step" id="step1">
                     <div class="status-icon">
                         <i class="fas fa-paper-plane"></i>
                     </div>
@@ -429,60 +443,46 @@
             </div>
 
             <div class="api-response" id="apiResponse">
-                <h4>API Response</h4>
-                <pre id="responseData">Waiting for response...</pre>
+                <h4><i class="fas fa-code"></i> API Response</h4>
+                <pre id="responseData">Waiting for API response...</pre>
             </div>
-        </div>
-    </section>
 
-    <!-- Services Section -->
-    <section class="services-section" id="services">
-        <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px;">Available Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <h3>Instagram Followers</h3>
-                    <p>High-quality real Instagram followers</p>
-                    <div class="service-price">$2.99 / 100 followers</div>
-                    <button class="cta-button" onclick="selectService(1, 'Instagram Followers')">Select</button>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-instagram"></i>
-                    </div>
-                    <h3>Instagram Likes</h3>
-                    <p>Real likes on your Instagram posts</p>
-                    <div class="service-price">$1.99 / 100 likes</div>
-                    <button class="cta-button" onclick="selectService(2, 'Instagram Likes')">Select</button>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-tiktok"></i>
-                    </div>
-                    <h3>TikTok Followers</h3>
-                    <p>Active TikTok followers</p>
-                    <div class="service-price">$3.99 / 100 followers</div>
-                    <button class="cta-button" onclick="selectService(4, 'TikTok Followers')">Select</button>
-                </div>
+            <div class="demo-section">
+                <h3>Want to test the API?</h3>
+                <p>Try our demo mode to see how it works</p>
+                <button class="demo-btn" onclick="fillDemoData()">
+                    <i class="fas fa-vial"></i> Fill Demo Data
+                </button>
             </div>
         </div>
-    </section>
+
+        <footer>
+            <p>&copy; 2023 SocialBoost Pro. This is a demonstration of SMM panel API integration.</p>
+            <p style="margin-top: 10px; font-size: 0.9rem;">
+                Note: This demo shows how to integrate with services like views.co.ke
+            </p>
+        </footer>
+    </div>
 
     <script>
         // Service selection
         function selectService(serviceId, serviceName) {
             document.getElementById('service').value = serviceId;
-            document.getElementById('profileLink').focus();
+            
+            // Update all service cards
+            document.querySelectorAll('.service-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            
+            // Highlight selected card
+            event.currentTarget.classList.add('selected');
             
             // Show notification
             showNotification(`Selected: ${serviceName}`, 'success');
         }
 
         // Form submission
-        document.getElementById('orderForm').addEventListener('submit', async function(e) {
+        document.getElementById('apiForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
             const apiKey = document.getElementById('apiKey').value;
@@ -490,8 +490,8 @@
             const profileLink = document.getElementById('profileLink').value;
             const quantity = document.getElementById('quantity').value;
             
-            // Show order status
-            document.getElementById('orderStatus').style.display = 'block';
+            // Show status indicators
+            document.getElementById('statusIndicators').style.display = 'flex';
             document.getElementById('apiResponse').style.display = 'block';
             
             // Update status steps
@@ -501,13 +501,20 @@
             
             try {
                 // Show sending request
-                document.getElementById('responseData').textContent = 'Sending API request...';
+                document.getElementById('responseData').textContent = 'Sending API request to SMM panel...';
                 
                 // Construct API URL (similar to views.co.ke)
                 const apiUrl = `https://views.co.ke/api/v2?action=add&service=${service}&link=${encodeURIComponent(profileLink)}&quantity=${quantity}&key=${apiKey}`;
                 
+                // Show the API URL being used
+                document.getElementById('responseData').textContent = `API Endpoint: ${apiUrl}\n\nSending request...`;
+                
                 // Make API request
-                const response = await fetch(apiUrl);
+                const response = await fetch(apiUrl, {
+                    method: 'GET',
+                    mode: 'cors'
+                });
+                
                 const data = await response.json();
                 
                 // Update status
@@ -517,8 +524,10 @@
                 // Show response
                 document.getElementById('responseData').textContent = JSON.stringify(data, null, 2);
                 
-                // Check if order was successful
+                // Style based on response
                 if (data && data.status === 'success') {
+                    document.getElementById('apiResponse').className = 'api-response response-success';
+                    
                     setTimeout(() => {
                         updateStatusStep(2, 'completed');
                         updateStatusStep(3, 'active');
@@ -537,7 +546,7 @@
             } catch (error) {
                 document.getElementById('responseData').textContent = 'Error: ' + error.message;
                 document.getElementById('apiResponse').className = 'api-response response-error';
-                showNotification('API request failed', 'error');
+                showNotification('API request failed. Check CORS or try demo mode.', 'error');
             }
         });
 
@@ -580,24 +589,28 @@
             }, 3000);
         }
 
-        // Auto-fill demo data for testing
+        // Fill demo data for testing
         function fillDemoData() {
-            document.getElementById('apiKey').value = 'demo_key_123456';
+            document.getElementById('apiKey').value = 'demo_key_123456789';
             document.getElementById('service').value = '1';
             document.getElementById('profileLink').value = 'https://instagram.com/demo_profile';
             document.getElementById('quantity').value = '100';
             
-            showNotification('Demo data filled for testing', 'success');
+            // Select the first service card
+            document.querySelectorAll('.service-card')[0].classList.add('selected');
+            
+            showNotification('Demo data filled. You can now test the API!', 'success');
         }
 
-        // Add demo button
-        const demoButton = document.createElement('button');
-        demoButton.textContent = 'Fill Demo Data';
-        demoButton.className = 'cta-button';
-        demoButton.style.background = 'var(--warning)';
-        demoButton.style.marginTop = '10px';
-        demoButton.onclick = fillDemoData;
-        document.querySelector('.api-form').appendChild(demoButton);
+        // Add CSS for notification animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
 </html>
