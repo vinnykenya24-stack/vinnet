@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+<pyegon>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <VIEWS>SocialBoost Pro | Generate Followers & Likes</title>
+    <title>InstantSocial | Get Followers Instantly</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -27,6 +27,7 @@
             background-color: var(--light);
             color: var(--dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         .container {
@@ -107,6 +108,18 @@
             color: white;
             text-align: center;
             border-radius: 0 0 30px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" opacity="0.1"><path fill="white" d="M500,200c150,0,250,100,250,250S650,700,500,700S250,600,250,450S350,200,500,200z"/></svg>') center/contain no-repeat;
         }
 
         .hero h1 {
@@ -314,60 +327,81 @@
             font-size: 0.9rem;
         }
 
-        /* Generation Progress Section */
-        .generation-progress {
+        /* Instant Results Section */
+        .instant-results {
             background: white;
             border-radius: 15px;
             padding: 30px;
             margin-top: 30px;
             display: none;
             text-align: center;
-        }
-
-        .progress-header {
-            margin-bottom: 30px;
-        }
-
-        .progress-bar {
-            height: 20px;
-            background: #eee;
-            border-radius: 10px;
-            margin-bottom: 20px;
+            position: relative;
             overflow: hidden;
         }
 
-        .progress-fill {
-            height: 100%;
-            background: var(--primary);
-            width: 0%;
-            transition: width 0.5s ease;
-            border-radius: 10px;
-        }
-
-        .progress-text {
+        .results-header {
             margin-bottom: 30px;
-            font-size: 1.1rem;
         }
 
-        .followers-added {
+        .results-header h3 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--success);
+        }
+
+        .counter-container {
             display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
             justify-content: center;
-            margin-top: 20px;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
         }
 
-        .follower-item {
+        .counter {
             background: var(--light);
-            border-radius: 10px;
-            padding: 10px 15px;
+            border-radius: 15px;
+            padding: 20px;
+            min-width: 150px;
+        }
+
+        .counter-value {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .counter-label {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .live-feed {
+            background: var(--light);
+            border-radius: 15px;
+            padding: 20px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .feed-item {
             display: flex;
             align-items: center;
-            gap: 10px;
-            animation: fadeIn 0.5s ease;
+            gap: 15px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            animation: slideIn 0.5s ease;
         }
 
-        .follower-avatar {
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .feed-avatar {
             width: 40px;
             height: 40px;
             border-radius: 50%;
@@ -379,18 +413,24 @@
             font-weight: bold;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .feed-text {
+            flex: 1;
+        }
+
+        .feed-username {
+            font-weight: 600;
+        }
+
+        .feed-action {
+            color: var(--gray);
+            font-size: 0.9rem;
         }
 
         .completion-message {
-            display: none;
             padding: 30px;
             background: rgba(46, 204, 113, 0.1);
             border-radius: 15px;
             margin-top: 30px;
-            text-align: center;
         }
 
         .completion-message i {
@@ -404,9 +444,168 @@
             color: var(--success);
         }
 
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Services Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card .service-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: var(--primary);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 25px;
+        }
+
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-features i {
+            color: var(--success);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
         /* Responsive Design */
         @media (max-width: 992px) {
             .link-input-container {
+                flex-direction: column;
+            }
+            
+            .counter-container {
                 flex-direction: column;
             }
         }
@@ -440,6 +639,10 @@
                 flex-direction: column;
                 text-align: center;
             }
+
+            .action-buttons {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -448,26 +651,25 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <i class="fas fa-rocket"></i>
-                <span>SocialBoost Pro</span>
+                <i class="fas fa-bolt"></i>
+                <span>InstantSocial</span>
             </div>
             <nav>
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#generate">Generate</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#how-it-works">How It Works</a></li>
                 </ul>
             </nav>
-            <a href="#generate" class="cta-button">Get Started</a>
+            <a href="#generate" class="cta-button">Get Followers Now</a>
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <h1>Boost Your Social Media Presence Instantly</h1>
-            <p>Get real followers, likes, views, and comments to grow your social media accounts organically. Start seeing results in minutes!</p>
+            <h1>Get Followers & Likes INSTANTLY</h1>
+            <p>Watch your social media accounts grow in real-time. No waiting, no delays - see results the moment you click!</p>
             <div class="hero-buttons">
                 <a href="#generate" class="btn-light">Generate Now</a>
                 <a href="#services" class="cta-button" style="background: transparent; border-color: white;">Our Services</a>
@@ -479,8 +681,8 @@
     <section class="profile-link-section" id="generate">
         <div class="container">
             <div class="profile-link-container">
-                <h2>Generate Followers & Likes</h2>
-                <p>Paste your profile link below and select the service you need</p>
+                <h2>Get Followers Instantly</h2>
+                <p>Paste your profile link and watch followers appear in real-time</p>
                 
                 <div class="platform-tabs">
                     <div class="platform-tab active" data-platform="instagram">
@@ -494,10 +696,6 @@
                     <div class="platform-tab" data-platform="youtube">
                         <i class="fab fa-youtube"></i>
                         <span>YouTube</span>
-                    </div>
-                    <div class="platform-tab" data-platform="twitter">
-                        <i class="fab fa-twitter"></i>
-                        <span>Twitter</span>
                     </div>
                 </div>
                 
@@ -522,58 +720,70 @@
                             <div class="service-icon">
                                 <i class="fas fa-users"></i>
                             </div>
-                            <h4>Followers</h4>
-                            <p>Get 100-500 real followers</p>
+                            <h4>500 Followers</h4>
+                            <p>Get 500 real followers instantly</p>
                         </div>
                         <div class="service-option" data-service="likes">
                             <div class="service-icon">
                                 <i class="fas fa-heart"></i>
                             </div>
-                            <h4>Likes</h4>
-                            <p>Get 200-1000 likes on your posts</p>
+                            <h4>1000 Likes</h4>
+                            <p>Get 1000 likes on your posts instantly</p>
                         </div>
                         <div class="service-option" data-service="views">
                             <div class="service-icon">
                                 <i class="fas fa-eye"></i>
                             </div>
-                            <h4>Views</h4>
-                            <p>Get 500-5000 views on your videos</p>
-                        </div>
-                        <div class="service-option" data-service="comments">
-                            <div class="service-icon">
-                                <i class="fas fa-comment"></i>
-                            </div>
-                            <h4>Comments</h4>
-                            <p>Get 50-200 authentic comments</p>
+                            <h4>5000 Views</h4>
+                            <p>Get 5000 views on your videos instantly</p>
                         </div>
                     </div>
                     
-                    <button class="generate-btn" id="startGeneration" style="width: 100%; margin-top: 20px;">Start Generating Now</button>
+                    <button class="generate-btn" id="startGeneration" style="width: 100%; margin-top: 20px;">Generate Instantly</button>
                 </div>
 
-                <!-- Generation Progress Section -->
-                <div class="generation-progress" id="generationProgress">
-                    <div class="progress-header">
-                        <h3>Generating Followers</h3>
-                        <p>We're adding followers to your profile. This may take a few minutes.</p>
+                <!-- Instant Results Section -->
+                <div class="instant-results" id="instantResults">
+                    <div class="results-header">
+                        <h3><i class="fas fa-bolt"></i> Generating Followers Instantly!</h3>
+                        <p>Watch your followers count grow in real-time</p>
                     </div>
                     
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressFill"></div>
+                    <div class="counter-container">
+                        <div class="counter">
+                            <div class="counter-value" id="followersCount">0</div>
+                            <div class="counter-label">Followers Added</div>
+                        </div>
+                        <div class="counter">
+                            <div class="counter-value" id="likesCount">0</div>
+                            <div class="counter-label">Likes Added</div>
+                        </div>
+                        <div class="counter">
+                            <div class="counter-value" id="viewsCount">0</div>
+                            <div class="counter-label">Views Added</div>
+                        </div>
                     </div>
                     
-                    <div class="progress-text" id="progressText">Initializing generation process...</div>
-                    
-                    <div class="followers-added" id="followersAdded">
-                        <!-- Followers will be added here dynamically -->
+                    <div class="live-feed" id="liveFeed">
+                        <div class="feed-item">
+                            <div class="feed-avatar">J</div>
+                            <div class="feed-text">
+                                <div class="feed-username">jessica_ray</div>
+                                <div class="feed-action">started following you</div>
+                            </div>
+                            <div class="feed-time">just now</div>
+                        </div>
                     </div>
 
                     <div class="completion-message" id="completionMessage">
                         <i class="fas fa-check-circle"></i>
                         <h3>Generation Complete!</h3>
-                        <p>We've successfully added <span id="followersCount">0</span> followers to your profile.</p>
-                        <p>Your new followers will appear within the next 24 hours.</p>
-                        <button class="generate-btn" id="generateMore" style="margin-top: 20px;">Generate More Followers</button>
+                        <p>We've successfully added <span id="totalFollowers">500</span> followers to your profile.</p>
+                        <p>Your new followers are visible on your profile RIGHT NOW!</p>
+                        <div class="action-buttons">
+                            <button class="generate-btn" id="generateMore">Generate More</button>
+                            <button class="generate-btn" style="background: var(--success);">Check Your Profile</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -606,8 +816,6 @@
                     return 'Paste your TikTok profile URL (e.g., https://tiktok.com/@yourusername)';
                 case 'youtube':
                     return 'Paste your YouTube channel URL (e.g., https://youtube.com/c/yourchannel)';
-                case 'twitter':
-                    return 'Paste your Twitter profile URL (e.g., https://twitter.com/yourusername)';
                 default:
                     return 'Paste your profile URL here';
             }
@@ -655,7 +863,7 @@
                     validateBtn.textContent = 'Validate Profile';
                     validateBtn.disabled = false;
                 }
-            }, 1500);
+            }, 1000);
         });
 
         // Extract username from URL
@@ -671,10 +879,6 @@
             }
             if (url.includes('youtube.com')) {
                 return 'youtube_channel';
-            }
-            if (url.includes('twitter.com')) {
-                const parts = url.split('/');
-                return parts[parts.length - 1] || 'twitter_user';
             }
             return 'user_' + Math.floor(Math.random() * 1000);
         }
@@ -699,106 +903,220 @@
             const selectedService = document.querySelector('.service-option.selected');
             
             if (!selectedService) {
-                alert('Please select a service (followers, likes, views, or comments)');
+                alert('Please select a service (followers, likes, or views)');
                 return;
             }
             
-            // Hide profile preview and show generation progress
+            // Hide profile preview and show instant results
             document.getElementById('profilePreview').style.display = 'none';
-            document.getElementById('generationProgress').style.display = 'block';
+            document.getElementById('instantResults').style.display = 'block';
             
-            // Start the generation simulation
-            simulateGeneration();
+            // Start the instant generation simulation
+            startInstantGeneration();
         });
 
-        // Simulate the generation process
-        function simulateGeneration() {
-            const progressFill = document.getElementById('progressFill');
-            const progressText = document.getElementById('progressText');
-            const followersAdded = document.getElementById('followersAdded');
-            const completionMessage = document.getElementById('completionMessage');
+        // Start instant generation
+        function startInstantGeneration() {
             const followersCount = document.getElementById('followersCount');
+            const likesCount = document.getElementById('likesCount');
+            const viewsCount = document.getElementById('viewsCount');
+            const liveFeed = document.getElementById('liveFeed');
+            const completionMessage = document.getElementById('completionMessage');
+            const totalFollowers = document.getElementById('totalFollowers');
             
-            let progress = 0;
-            let followersGenerated = 0;
-            const targetFollowers = 250; // Target number of followers to generate
-            
-            // Reset
-            progressFill.style.width = '0%';
-            followersAdded.innerHTML = '';
+            // Reset counters
+            followersCount.textContent = '0';
+            likesCount.textContent = '0';
+            viewsCount.textContent = '0';
+            liveFeed.innerHTML = '';
             completionMessage.style.display = 'none';
             
-            // Start the progress simulation
+            const selectedService = document.querySelector('.service-option.selected').getAttribute('data-service');
+            let targetCount = 0;
+            
+            // Set target based on service
+            if (selectedService === 'followers') {
+                targetCount = 500;
+            } else if (selectedService === 'likes') {
+                targetCount = 1000;
+            } else if (selectedService === 'views') {
+                targetCount = 5000;
+            }
+            
+            totalFollowers.textContent = targetCount;
+            
+            let currentCount = 0;
             const interval = setInterval(() => {
-                progress += 1;
-                progressFill.style.width = `${progress}%`;
+                // Increase counters
+                currentCount += Math.floor(Math.random() * 10) + 5;
                 
-                // Update progress text based on progress
-                if (progress <= 20) {
-                    progressText.textContent = 'Connecting to social media API...';
-                } else if (progress <= 40) {
-                    progressText.textContent = 'Setting up follower generation...';
-                } else if (progress <= 60) {
-                    progressText.textContent = 'Generating follower profiles...';
-                } else if (progress <= 80) {
-                    progressText.textContent = 'Adding followers to your account...';
-                } else {
-                    progressText.textContent = 'Finalizing...';
-                }
-                
-                // Add followers during the process
-                if (progress % 5 === 0 && followersGenerated < targetFollowers) {
-                    const followersToAdd = Math.min(10, targetFollowers - followersGenerated);
-                    addFollowers(followersToAdd);
-                    followersGenerated += followersToAdd;
-                }
-                
-                // Complete the process
-                if (progress >= 100) {
+                if (currentCount >= targetCount) {
+                    currentCount = targetCount;
                     clearInterval(interval);
-                    progressText.textContent = 'Generation complete!';
                     
                     // Show completion message after a short delay
                     setTimeout(() => {
                         completionMessage.style.display = 'block';
-                        followersCount.textContent = followersGenerated;
-                    }, 1000);
+                    }, 500);
+                }
+                
+                // Update counters based on service
+                if (selectedService === 'followers') {
+                    followersCount.textContent = currentCount;
+                    addFollowerToFeed();
+                } else if (selectedService === 'likes') {
+                    likesCount.textContent = currentCount;
+                    addLikeToFeed();
+                } else if (selectedService === 'views') {
+                    viewsCount.textContent = currentCount;
+                    addViewToFeed();
                 }
             }, 50);
         }
 
-        // Add followers to the display
-        function addFollowers(count) {
-            const followersAdded = document.getElementById('followersAdded');
+        // Add follower to live feed
+        function addFollowerToFeed() {
+            const liveFeed = document.getElementById('liveFeed');
             const usernames = [
                 "jessica_ray", "mike_tyson", "sarah_j", "travel_diaries", 
                 "foodie_adventures", "tech_guru", "fitness_freak", "art_lover",
                 "music_maniac", "bookworm", "nature_photographer", "fashion_icon",
-                "gaming_pro", "pet_lover", "movie_buff", "fitness_model",
-                "coding_ninja", "business_mind", "yoga_teacher", "chef_life"
+                "gaming_pro", "pet_lover", "movie_buff", "fitness_model"
             ];
             
-            for (let i = 0; i < count; i++) {
-                const username = usernames[Math.floor(Math.random() * usernames.length)];
-                const followerItem = document.createElement('div');
-                followerItem.className = 'follower-item';
-                
-                const avatar = document.createElement('div');
-                avatar.className = 'follower-avatar';
-                avatar.textContent = username.charAt(0).toUpperCase();
-                
-                const name = document.createElement('div');
-                name.textContent = username;
-                
-                followerItem.appendChild(avatar);
-                followerItem.appendChild(name);
-                followersAdded.appendChild(followerItem);
+            const username = usernames[Math.floor(Math.random() * usernames.length)];
+            const feedItem = document.createElement('div');
+            feedItem.className = 'feed-item';
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'feed-avatar';
+            avatar.textContent = username.charAt(0).toUpperCase();
+            
+            const feedText = document.createElement('div');
+            feedText.className = 'feed-text';
+            
+            const usernameEl = document.createElement('div');
+            usernameEl.className = 'feed-username';
+            usernameEl.textContent = username;
+            
+            const action = document.createElement('div');
+            action.className = 'feed-action';
+            action.textContent = 'started following you';
+            
+            const time = document.createElement('div');
+            time.className = 'feed-time';
+            time.textContent = 'just now';
+            
+            feedText.appendChild(usernameEl);
+            feedText.appendChild(action);
+            feedItem.appendChild(avatar);
+            feedItem.appendChild(feedText);
+            feedItem.appendChild(time);
+            
+            // Add to top of feed
+            liveFeed.insertBefore(feedItem, liveFeed.firstChild);
+            
+            // Limit feed items
+            if (liveFeed.children.length > 10) {
+                liveFeed.removeChild(liveFeed.lastChild);
+            }
+        }
+
+        // Add like to live feed
+        function addLikeToFeed() {
+            const liveFeed = document.getElementById('liveFeed');
+            const usernames = [
+                "jessica_ray", "mike_tyson", "sarah_j", "travel_diaries", 
+                "foodie_adventures", "tech_guru", "fitness_freak", "art_lover"
+            ];
+            
+            const username = usernames[Math.floor(Math.random() * usernames.length)];
+            const feedItem = document.createElement('div');
+            feedItem.className = 'feed-item';
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'feed-avatar';
+            avatar.textContent = username.charAt(0).toUpperCase();
+            
+            const feedText = document.createElement('div');
+            feedText.className = 'feed-text';
+            
+            const usernameEl = document.createElement('div');
+            usernameEl.className = 'feed-username';
+            usernameEl.textContent = username;
+            
+            const action = document.createElement('div');
+            action.className = 'feed-action';
+            action.textContent = 'liked your post';
+            
+            const time = document.createElement('div');
+            time.className = 'feed-time';
+            time.textContent = 'just now';
+            
+            feedText.appendChild(usernameEl);
+            feedText.appendChild(action);
+            feedItem.appendChild(avatar);
+            feedItem.appendChild(feedText);
+            feedItem.appendChild(time);
+            
+            // Add to top of feed
+            liveFeed.insertBefore(feedItem, liveFeed.firstChild);
+            
+            // Limit feed items
+            if (liveFeed.children.length > 10) {
+                liveFeed.removeChild(liveFeed.lastChild);
+            }
+        }
+
+        // Add view to live feed
+        function addViewToFeed() {
+            const liveFeed = document.getElementById('liveFeed');
+            const usernames = [
+                "user_123", "viewer_456", "watcher_789", "video_fan", 
+                "content_lover", "stream_buddy", "media_follower"
+            ];
+            
+            const username = usernames[Math.floor(Math.random() * usernames.length)];
+            const feedItem = document.createElement('div');
+            feedItem.className = 'feed-item';
+            
+            const avatar = document.createElement('div');
+            avatar.className = 'feed-avatar';
+            avatar.textContent = username.charAt(0).toUpperCase();
+            
+            const feedText = document.createElement('div');
+            feedText.className = 'feed-text';
+            
+            const usernameEl = document.createElement('div');
+            usernameEl.className = 'feed-username';
+            usernameEl.textContent = username;
+            
+            const action = document.createElement('div');
+            action.className = 'feed-action';
+            action.textContent = 'watched your video';
+            
+            const time = document.createElement('div');
+            time.className = 'feed-time';
+            time.textContent = 'just now';
+            
+            feedText.appendChild(usernameEl);
+            feedText.appendChild(action);
+            feedItem.appendChild(avatar);
+            feedItem.appendChild(feedText);
+            feedItem.appendChild(time);
+            
+            // Add to top of feed
+            liveFeed.insertBefore(feedItem, liveFeed.firstChild);
+            
+            // Limit feed items
+            if (liveFeed.children.length > 10) {
+                liveFeed.removeChild(liveFeed.lastChild);
             }
         }
 
         // Generate More Button
         document.getElementById('generateMore').addEventListener('click', () => {
-            document.getElementById('generationProgress').style.display = 'none';
+            document.getElementById('instantResults').style.display = 'none';
             document.getElementById('profilePreview').style.display = 'block';
         });
 
