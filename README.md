@@ -1,27 +1,4 @@
-// What some shady services actually do:
-const bots = [
-  {username: "bot_account_1", password: "pass123"},
-  {username: "bot_account_2", password: "pass123"},
-  // ... thousands of fake accounts
-];
-
-bots.forEach(bot => {
-  loginToInstagram(bot); // Against ToS
-  followTargetAccount("@yourprofile"); // Against ToS
-});// They create networks where users follow each other
-if (userA follows userB) {
-  userB gets points;
-  userB must follow back or lose points;
-}<div class="legitimate-strategy">
-  <h3>Real Growth Takes Time</h3>
-  <ul>
-    <li>✅ Post quality content consistently</li>
-    <li>✅ Engage with your audience</li>
-    <li>✅ Use relevant hashtags</li>
-    <li>✅ Collaborate with other creators</li>
-    <li>✅ Run legitimate ads</li>
-  </ul>
-</div><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Social Growth Analytics - Legitimate Service</title>
