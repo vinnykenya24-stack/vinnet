@@ -1,4 +1,4 @@
-<VIEWS>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -314,279 +314,98 @@
             font-size: 0.9rem;
         }
 
-        /* Services Section */
-        .section {
-            padding: 100px 0;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-header h2 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--dark);
-        }
-
-        .section-header p {
-            color: var(--gray);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .service-card {
+        /* Generation Progress Section */
+        .generation-progress {
             background: white;
             border-radius: 15px;
-            padding: 40px 30px;
+            padding: 30px;
+            margin-top: 30px;
+            display: none;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .service-card .service-icon {
-            width: 80px;
-            height: 80px;
-            background: rgba(108, 99, 255, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 25px;
-            font-size: 2rem;
-            color: var(--primary);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: var(--gray);
-            margin-bottom: 25px;
-        }
-
-        .service-features {
-            list-style: none;
-            text-align: left;
+        .progress-header {
             margin-bottom: 30px;
         }
 
-        .service-features li {
-            padding: 8px 0;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .service-features i {
-            color: var(--success);
-        }
-
-        /* How It Works Section */
-        .steps-container {
-            display: flex;
-            justify-content: space-between;
-            max-width: 900px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .steps-container::before {
-            content: '';
-            position: absolute;
-            top: 40px;
-            left: 10%;
-            right: 10%;
-            height: 3px;
-            background: var(--primary);
-            z-index: 1;
-        }
-
-        .step {
-            text-align: center;
-            position: relative;
-            z-index: 2;
-            flex: 1;
-        }
-
-        .step-number {
-            width: 80px;
-            height: 80px;
-            background: white;
-            border: 3px solid var(--primary);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin: 0 auto 25px;
-        }
-
-        .step h3 {
-            margin-bottom: 15px;
-        }
-
-        .step p {
-            color: var(--gray);
-            max-width: 250px;
-            margin: 0 auto;
-        }
-
-        /* Testimonials Section */
-        .testimonials {
-            background: linear-gradient(135deg, #6C63FF 0%, #4A44C6 100%);
-            color: white;
-            padding: 100px 0;
-            border-radius: 30px;
-        }
-
-        .testimonials .section-header h2,
-        .testimonials .section-header p {
-            color: white;
-        }
-
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .testimonial-card {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            border-radius: 15px;
-            padding: 30px;
-        }
-
-        .testimonial-text {
-            font-style: italic;
+        .progress-bar {
+            height: 20px;
+            background: #eee;
+            border-radius: 10px;
             margin-bottom: 20px;
+            overflow: hidden;
         }
 
-        .testimonial-author {
+        .progress-fill {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 10px;
+        }
+
+        .progress-text {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+
+        .followers-added {
             display: flex;
-            align-items: center;
+            flex-wrap: wrap;
             gap: 15px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: white;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .author-info h4 {
-            margin-bottom: 5px;
-        }
-
-        .author-info p {
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--dark);
-            color: white;
-            padding: 80px 0 30px;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-col h3 {
-            margin-bottom: 25px;
-            font-size: 1.2rem;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 15px;
-        }
-
-        .footer-col a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .footer-col a:hover {
-            color: white;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 15px;
             margin-top: 20px;
         }
 
-        .social-links a {
+        .follower-item {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .follower-avatar {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: background 0.3s;
+            color: white;
+            font-weight: bold;
         }
 
-        .social-links a:hover {
-            background: var(--primary);
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        .copyright {
+        .completion-message {
+            display: none;
+            padding: 30px;
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 15px;
+            margin-top: 30px;
             text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 0.9rem;
+        }
+
+        .completion-message i {
+            font-size: 3rem;
+            color: var(--success);
+            margin-bottom: 20px;
+        }
+
+        .completion-message h3 {
+            margin-bottom: 10px;
+            color: var(--success);
         }
 
         /* Responsive Design */
         @media (max-width: 992px) {
-            .steps-container {
-                flex-direction: column;
-                gap: 50px;
-            }
-
-            .steps-container::before {
-                display: none;
-            }
-
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-
             .link-input-container {
                 flex-direction: column;
             }
@@ -638,7 +457,6 @@
                     <li><a href="#generate">Generate</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#how-it-works">How It Works</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
                 </ul>
             </nav>
             <a href="#generate" class="cta-button">Get Started</a>
@@ -684,7 +502,7 @@
                 </div>
                 
                 <div class="link-input-container">
-                    <input type="text" class="link-input" id="profileLink" placeholder="Paste your profile URL here (e.g., https://instagram.com/yourusername)">
+                    <input type="text" class="link-input" id="profileLink" placeholder="Paste your Instagram profile URL here (e.g., https://instagram.com/yourusername)">
                     <button class="generate-btn" id="validateBtn">Validate Profile</button>
                 </div>
                 
@@ -705,223 +523,62 @@
                                 <i class="fas fa-users"></i>
                             </div>
                             <h4>Followers</h4>
-                            <p>Get real followers for your profile</p>
+                            <p>Get 100-500 real followers</p>
                         </div>
                         <div class="service-option" data-service="likes">
                             <div class="service-icon">
                                 <i class="fas fa-heart"></i>
                             </div>
                             <h4>Likes</h4>
-                            <p>Increase engagement with more likes</p>
+                            <p>Get 200-1000 likes on your posts</p>
                         </div>
                         <div class="service-option" data-service="views">
                             <div class="service-icon">
                                 <i class="fas fa-eye"></i>
                             </div>
                             <h4>Views</h4>
-                            <p>Boost your video view count</p>
+                            <p>Get 500-5000 views on your videos</p>
                         </div>
                         <div class="service-option" data-service="comments">
                             <div class="service-icon">
                                 <i class="fas fa-comment"></i>
                             </div>
                             <h4>Comments</h4>
-                            <p>Get authentic comments on your posts</p>
+                            <p>Get 50-200 authentic comments</p>
                         </div>
                     </div>
                     
-                    <button class="generate-btn" id="startGeneration" style="width: 100%; margin-top: 20px;">Start Generation</button>
+                    <button class="generate-btn" id="startGeneration" style="width: 100%; margin-top: 20px;">Start Generating Now</button>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Services Section -->
-    <section class="section" id="services">
-        <div class="container">
-            <div class="section-header">
-                <h2>Our Social Media Services</h2>
-                <p>We offer a variety of services to boost your social media presence across all major platforms</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-instagram"></i>
+                <!-- Generation Progress Section -->
+                <div class="generation-progress" id="generationProgress">
+                    <div class="progress-header">
+                        <h3>Generating Followers</h3>
+                        <p>We're adding followers to your profile. This may take a few minutes.</p>
                     </div>
-                    <h3>Instagram Growth</h3>
-                    <p>Increase your Instagram followers, likes, and comments with our premium service</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Real Followers</li>
-                        <li><i class="fas fa-check"></i> High-Quality Likes</li>
-                        <li><i class="fas fa-check"></i> Engaging Comments</li>
-                        <li><i class="fas fa-check"></i> Story Views</li>
-                        <li><i class="fas fa-check"></i> 24/7 Support</li>
-                    </ul>
-                    <a href="#generate" class="cta-button">Generate Now</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-tiktok"></i>
+                    
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
                     </div>
-                    <h3>TikTok Promotion</h3>
-                    <p>Boost your TikTok profile with followers, likes, views, and shares</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> TikTok Followers</li>
-                        <li><i class="fas fa-check"></i> Video Likes</li>
-                        <li><i class="fas fa-check"></i> Video Views</li>
-                        <li><i class="fas fa-check"></i> Shares</li>
-                        <li><i class="fas fa-check"></i> Profile Visits</li>
-                    </ul>
-                    <a href="#generate" class="cta-button">Generate Now</a>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fab fa-youtube"></i>
+                    
+                    <div class="progress-text" id="progressText">Initializing generation process...</div>
+                    
+                    <div class="followers-added" id="followersAdded">
+                        <!-- Followers will be added here dynamically -->
                     </div>
-                    <h3>YouTube Growth</h3>
-                    <p>Increase your YouTube subscribers, views, likes, and comments</p>
-                    <ul class="service-features">
-                        <li><i class="fas fa-check"></i> Real Subscribers</li>
-                        <li><i class="fas fa-check"></i> High Retention Views</li>
-                        <li><i class="fas fa-check"></i> Video Likes</li>
-                        <li><i class="fas fa-check"></i> Comments</li>
-                        <li><i class="fas fa-check"></i> Watch Time</li>
-                    </ul>
-                    <a href="#generate" class="cta-button">Generate Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- How It Works Section -->
-    <section class="section" id="how-it-works">
-        <div class="container">
-            <div class="section-header">
-                <h2>How It Works</h2>
-                <p>Getting started with our service is quick and easy</p>
-            </div>
-            <div class="steps-container">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Paste Profile Link</h3>
-                    <p>Copy and paste your social media profile URL</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Select Service</h3>
-                    <p>Choose followers, likes, views, or comments</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Validate Profile</h3>
-                    <p>Our system verifies your profile and prepares the service</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <h3>See Results</h3>
-                    <p>Watch as your followers, likes, or views start increasing</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-header">
-                <h2>What Our Clients Say</h2>
-                <p>Don't just take our word for it - hear from some of our satisfied customers</p>
-            </div>
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "I was skeptical at first, but SocialBoost Pro delivered exactly what they promised. My Instagram following grew by 2,000 real followers in just one week!"
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">SM</div>
-                        <div class="author-info">
-                            <h4>Sarah Mitchell</h4>
-                            <p>Influencer</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "As a small business owner, social media presence is crucial. Thanks to SocialBoost Pro, my engagement has skyrocketed and I'm reaching more customers than ever."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">JR</div>
-                        <div class="author-info">
-                            <h4>James Rodriguez</h4>
-                            <p>Business Owner</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-text">
-                        "The TikTok promotion service helped my videos go viral. I gained 10,000 followers in a month and now brands are reaching out to me for collaborations!"
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-avatar">AP</div>
-                        <div class="author-info">
-                            <h4>Alexis Parker</h4>
-                            <p>Content Creator</p>
-                        </div>
+                    <div class="completion-message" id="completionMessage">
+                        <i class="fas fa-check-circle"></i>
+                        <h3>Generation Complete!</h3>
+                        <p>We've successfully added <span id="followersCount">0</span> followers to your profile.</p>
+                        <p>Your new followers will appear within the next 24 hours.</p>
+                        <button class="generate-btn" id="generateMore" style="margin-top: 20px;">Generate More Followers</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h3>SocialBoost Pro</h3>
-                    <p>Helping individuals and businesses grow their social media presence since 2020.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h3>Services</h3>
-                    <ul>
-                        <li><a href="#generate">Instagram Growth</a></li>
-                        <li><a href="#generate">TikTok Promotion</a></li>
-                        <li><a href="#generate">YouTube Growth</a></li>
-                        <li><a href="#generate">Twitter Boost</a></li>
-                        <li><a href="#generate">Facebook Likes</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Company</h3>
-                    <ul>
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Blog</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Affiliate Program</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h3>Support</h3>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Terms of Service</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="copyright">
-                &copy; 2023 SocialBoost Pro. All rights reserved.
-            </div>
-        </div>
-    </footer>
 
     <script>
         // Platform Tabs Functionality
@@ -1046,13 +703,103 @@
                 return;
             }
             
-            const service = selectedService.getAttribute('data-service');
-            const platform = document.querySelector('.platform-tab.active').getAttribute('data-platform');
-            const username = document.getElementById('profileName').textContent;
+            // Hide profile preview and show generation progress
+            document.getElementById('profilePreview').style.display = 'none';
+            document.getElementById('generationProgress').style.display = 'block';
             
-            alert(`Starting ${service} generation for ${username} on ${platform}. This is a demonstration - in a real application, this would connect to a backend service.`);
+            // Start the generation simulation
+            simulateGeneration();
+        });
+
+        // Simulate the generation process
+        function simulateGeneration() {
+            const progressFill = document.getElementById('progressFill');
+            const progressText = document.getElementById('progressText');
+            const followersAdded = document.getElementById('followersAdded');
+            const completionMessage = document.getElementById('completionMessage');
+            const followersCount = document.getElementById('followersCount');
             
-            // In a real application, this would make an API call to start the generation process
+            let progress = 0;
+            let followersGenerated = 0;
+            const targetFollowers = 250; // Target number of followers to generate
+            
+            // Reset
+            progressFill.style.width = '0%';
+            followersAdded.innerHTML = '';
+            completionMessage.style.display = 'none';
+            
+            // Start the progress simulation
+            const interval = setInterval(() => {
+                progress += 1;
+                progressFill.style.width = `${progress}%`;
+                
+                // Update progress text based on progress
+                if (progress <= 20) {
+                    progressText.textContent = 'Connecting to social media API...';
+                } else if (progress <= 40) {
+                    progressText.textContent = 'Setting up follower generation...';
+                } else if (progress <= 60) {
+                    progressText.textContent = 'Generating follower profiles...';
+                } else if (progress <= 80) {
+                    progressText.textContent = 'Adding followers to your account...';
+                } else {
+                    progressText.textContent = 'Finalizing...';
+                }
+                
+                // Add followers during the process
+                if (progress % 5 === 0 && followersGenerated < targetFollowers) {
+                    const followersToAdd = Math.min(10, targetFollowers - followersGenerated);
+                    addFollowers(followersToAdd);
+                    followersGenerated += followersToAdd;
+                }
+                
+                // Complete the process
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    progressText.textContent = 'Generation complete!';
+                    
+                    // Show completion message after a short delay
+                    setTimeout(() => {
+                        completionMessage.style.display = 'block';
+                        followersCount.textContent = followersGenerated;
+                    }, 1000);
+                }
+            }, 50);
+        }
+
+        // Add followers to the display
+        function addFollowers(count) {
+            const followersAdded = document.getElementById('followersAdded');
+            const usernames = [
+                "jessica_ray", "mike_tyson", "sarah_j", "travel_diaries", 
+                "foodie_adventures", "tech_guru", "fitness_freak", "art_lover",
+                "music_maniac", "bookworm", "nature_photographer", "fashion_icon",
+                "gaming_pro", "pet_lover", "movie_buff", "fitness_model",
+                "coding_ninja", "business_mind", "yoga_teacher", "chef_life"
+            ];
+            
+            for (let i = 0; i < count; i++) {
+                const username = usernames[Math.floor(Math.random() * usernames.length)];
+                const followerItem = document.createElement('div');
+                followerItem.className = 'follower-item';
+                
+                const avatar = document.createElement('div');
+                avatar.className = 'follower-avatar';
+                avatar.textContent = username.charAt(0).toUpperCase();
+                
+                const name = document.createElement('div');
+                name.textContent = username;
+                
+                followerItem.appendChild(avatar);
+                followerItem.appendChild(name);
+                followersAdded.appendChild(followerItem);
+            }
+        }
+
+        // Generate More Button
+        document.getElementById('generateMore').addEventListener('click', () => {
+            document.getElementById('generationProgress').style.display = 'none';
+            document.getElementById('profilePreview').style.display = 'block';
         });
 
         // Smooth scrolling for navigation links
@@ -1069,29 +816,6 @@
                     });
                 }
             });
-        });
-
-        // Add animation on scroll
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        // Observe elements for animation
-        document.querySelectorAll('.service-card, .step, .testimonial-card, .service-option').forEach(el => {
-            el.style.opacity = 0;
-            el.style.transform = 'translateY(20px)';
-            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-            observer.observe(el);
         });
     </script>
 </body>
