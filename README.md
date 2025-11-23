@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<vinnet services>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
