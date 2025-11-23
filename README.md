@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SocialPulse Analytics | Social Media Dashboard</title>
+    <title>SocialBoost Pro | Social Media Growth Services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,761 +14,932 @@
         }
 
         :root {
-            --primary: #4361ee;
-            --secondary: #3a0ca3;
-            --success: #4cc9f0;
-            --warning: #f72585;
-            --dark: #2b2d42;
-            --light: #f8f9fa;
-            --gray: #adb5bd;
-            --card-bg: rgba(255, 255, 255, 0.95);
+            --primary: #6C63FF;
+            --secondary: #4A44C6;
+            --accent: #FF6584;
+            --dark: #2A2D3E;
+            --light: #F7F9FC;
+            --gray: #8C8E9A;
+            --success: #2ECC71;
         }
 
         body {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background-color: var(--light);
             color: var(--dark);
-            min-height: 100vh;
-            padding: 20px;
+            line-height: 1.6;
         }
 
         .container {
-            max-width: 1400px;
+            width: 100%;
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 20px;
         }
 
+        /* Header Styles */
         header {
+            background: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
-            margin-bottom: 30px;
         }
 
         .logo {
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
         }
 
         .logo i {
-            font-size: 2.5rem;
-            color: var(--light);
-        }
-
-        .logo h1 {
-            color: white;
-            font-size: 2.2rem;
-            font-weight: 700;
-        }
-
-        .user-info {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            color: white;
-        }
-
-        .user-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        .dashboard {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 25px;
-        }
-
-        .sidebar {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            height: fit-content;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 12px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .nav-item:hover, .nav-item.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .nav-item i {
-            font-size: 1.2rem;
-        }
-
-        .main-content {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-        }
-
-        .profile-section {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .profile-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-        }
-
-        .profile-info {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .profile-avatar {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            display: flex;
-            align-items: center;
-            justify-content: center;
             font-size: 2rem;
-            color: white;
         }
 
-        .profile-details h2 {
-            font-size: 1.8rem;
-            margin-bottom: 5px;
-        }
-
-        .profile-details p {
-            color: var(--gray);
-        }
-
-        .platform-tabs {
+        nav ul {
             display: flex;
-            gap: 10px;
-            margin-bottom: 25px;
+            list-style: none;
+            gap: 30px;
         }
 
-        .platform-tab {
-            padding: 10px 20px;
-            background: var(--light);
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
         }
 
-        .platform-tab.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .stat-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .stat-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .stat-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-        }
-
-        .icon-followers {
-            background: rgba(67, 97, 238, 0.2);
+        nav a:hover {
             color: var(--primary);
         }
 
-        .icon-engagement {
-            background: rgba(76, 201, 240, 0.2);
-            color: var(--success);
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
         }
 
-        .icon-reach {
-            background: rgba(247, 37, 133, 0.2);
-            color: var(--warning);
+        .btn {
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
         }
 
-        .icon-posts {
-            background: rgba(43, 45, 66, 0.2);
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background: transparent;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 99, 255, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #6C63FF 0%, #4A44C6 100%);
+            color: white;
+            text-align: center;
+            border-radius: 0 0 30px 30px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+        }
+
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--primary);
+            border: 2px solid white;
+        }
+
+        /* Services Section */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
             color: var(--dark);
         }
 
-        .stat-value {
-            font-size: 2.2rem;
-            font-weight: 700;
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        .stat-change {
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(108, 99, 255, 0.1);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 5px;
-            font-size: 0.9rem;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            color: var(--primary);
         }
 
-        .positive {
-            color: #2ecc71;
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
         }
 
-        .negative {
-            color: #e74c3c;
+        .service-card p {
+            color: var(--gray);
+            margin-bottom: 25px;
         }
 
-        .charts-grid {
+        .service-features {
+            list-style: none;
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .service-features i {
+            color: var(--success);
+        }
+
+        /* Pricing Section */
+        .pricing-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
-        .chart-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        .pricing-card {
+            background: white;
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: transform 0.3s ease;
         }
 
-        .chart-header {
+        .pricing-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card.popular {
+            border: 2px solid var(--primary);
+            transform: scale(1.05);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 20px 0;
+        }
+
+        .price span {
+            font-size: 1rem;
+            color: var(--gray);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 30px 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 10px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features i {
+            color: var(--success);
+        }
+
+        /* How It Works Section */
+        .steps-container {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-
-        .chart-container {
-            height: 300px;
+            max-width: 900px;
+            margin: 0 auto;
             position: relative;
         }
 
-        .insights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+        .steps-container::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 3px;
+            background: var(--primary);
+            z-index: 1;
         }
 
-        .insight-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            flex: 1;
         }
 
-        .insight-header {
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border: 3px solid var(--primary);
+            border-radius: 50%;
             display: flex;
             align-items: center;
-            gap: 15px;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 0 auto 25px;
+        }
+
+        .step h3 {
+            margin-bottom: 15px;
+        }
+
+        .step p {
+            color: var(--gray);
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(135deg, #6C63FF 0%, #4A44C6 100%);
+            color: white;
+            padding: 100px 0;
+            border-radius: 30px;
+        }
+
+        .testimonials .section-header h2,
+        .testimonials .section-header p {
+            color: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
             margin-bottom: 20px;
         }
 
-        .insight-icon {
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
             width: 50px;
             height: 50px;
-            border-radius: 12px;
-            background: rgba(67, 97, 238, 0.1);
+            border-radius: 50%;
+            background: white;
             display: flex;
             align-items: center;
             justify-content: center;
             color: var(--primary);
-            font-size: 1.5rem;
+            font-weight: bold;
         }
 
-        .hashtag-list, .time-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .author-info h4 {
+            margin-bottom: 5px;
         }
 
-        .hashtag-item, .time-item {
+        .author-info p {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .faq-question {
+            padding: 20px 30px;
             display: flex;
             justify-content: space-between;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eee;
-        }
-
-        .hashtag-name {
+            align-items: center;
+            cursor: pointer;
             font-weight: 600;
         }
 
-        .hashtag-count {
-            color: var(--gray);
-        }
-
-        .time-slot {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .time-bar {
-            height: 8px;
-            background: #eee;
-            border-radius: 4px;
-            margin-top: 5px;
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
             overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
         }
 
-        .time-fill {
-            height: 100%;
-            background: var(--primary);
-            border-radius: 4px;
+        .faq-item.active .faq-answer {
+            padding: 0 30px 20px;
+            max-height: 200px;
         }
 
-        .content-suggestions {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+        .faq-item.active .faq-toggle i {
+            transform: rotate(180deg);
         }
 
-        .suggestion-item {
-            display: flex;
-            gap: 15px;
-            padding: 15px;
-            background: var(--light);
-            border-radius: 12px;
+        .faq-toggle {
+            transition: transform 0.3s ease;
         }
 
-        .suggestion-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 10px;
-            background: var(--primary);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 80px 0 30px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+
+        .footer-col h3 {
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-col a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-col a:hover {
             color: white;
         }
 
-        @media (max-width: 1200px) {
-            .charts-grid {
-                grid-template-columns: 1fr;
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .steps-container {
+                flex-direction: column;
+                gap: 50px;
+            }
+
+            .steps-container::before {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
             }
         }
 
         @media (max-width: 768px) {
-            .dashboard {
-                grid-template-columns: 1fr;
-            }
-            
-            .sidebar {
-                display: none;
-            }
-            
-            .profile-info {
+            .header-container {
                 flex-direction: column;
-                text-align: center;
+                gap: 20px;
             }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
             <div class="logo">
-                <i class="fas fa-chart-line"></i>
-                <h1>SocialPulse Analytics</h1>
+                <i class="fas fa-rocket"></i>
+                <span>SocialBoost Pro</span>
             </div>
-            <div class="user-info">
-                <div class="user-avatar">JD</div>
-                <div>
-                    <div>John Doe</div>
-                    <div style="font-size: 0.9rem; opacity: 0.8;">Pro Plan</div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                </ul>
+            </nav>
+            <div class="auth-buttons">
+                <a href="#" class="btn btn-outline">Login</a>
+                <a href="#" class="btn btn-primary">Sign Up</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Boost Your Social Media Presence Instantly</h1>
+            <p>Get real followers, likes, views, and comments to grow your social media accounts organically. Start seeing results in minutes!</p>
+            <div class="hero-buttons">
+                <a href="#services" class="btn btn-light">Our Services</a>
+                <a href="#pricing" class="btn btn-outline" style="border-color: white; color: white;">View Pricing</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Social Media Services</h2>
+                <p>We offer a variety of services to boost your social media presence across all major platforms</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <h3>Instagram Growth</h3>
+                    <p>Increase your Instagram followers, likes, and comments with our premium service</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Real Followers</li>
+                        <li><i class="fas fa-check"></i> High-Quality Likes</li>
+                        <li><i class="fas fa-check"></i> Engaging Comments</li>
+                        <li><i class="fas fa-check"></i> Story Views</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-tiktok"></i>
+                    </div>
+                    <h3>TikTok Promotion</h3>
+                    <p>Boost your TikTok profile with followers, likes, views, and shares</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> TikTok Followers</li>
+                        <li><i class="fas fa-check"></i> Video Likes</li>
+                        <li><i class="fas fa-check"></i> Video Views</li>
+                        <li><i class="fas fa-check"></i> Shares</li>
+                        <li><i class="fas fa-check"></i> Profile Visits</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Get Started</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fab fa-youtube"></i>
+                    </div>
+                    <h3>YouTube Growth</h3>
+                    <p>Increase your YouTube subscribers, views, likes, and comments</p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Real Subscribers</li>
+                        <li><i class="fas fa-check"></i> High Retention Views</li>
+                        <li><i class="fas fa-check"></i> Video Likes</li>
+                        <li><i class="fas fa-check"></i> Comments</li>
+                        <li><i class="fas fa-check"></i> Watch Time</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Get Started</a>
                 </div>
             </div>
-        </header>
+        </div>
+    </section>
 
-        <div class="dashboard">
-            <div class="sidebar">
-                <div class="nav-item active">
-                    <i class="fas fa-home"></i>
-                    <span>Dashboard</span>
+    <!-- Pricing Section -->
+    <section class="section" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Affordable Pricing Plans</h2>
+                <p>Choose the plan that works best for your needs and budget</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="price">$9.99<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 500 Followers</li>
+                        <li><i class="fas fa-check"></i> 1,000 Likes</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        <li><i class="fas fa-check"></i> 1 Social Platform</li>
+                        <li><i class="fas fa-times"></i> Priority Delivery</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline">Select Plan</a>
                 </div>
-                <div class="nav-item">
-                    <i class="fas fa-chart-bar"></i>
-                    <span>Analytics</span>
+                <div class="pricing-card popular">
+                    <div class="popular-badge">Most Popular</div>
+                    <h3>Professional</h3>
+                    <div class="price">$24.99<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 2,500 Followers</li>
+                        <li><i class="fas fa-check"></i> 5,000 Likes</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        <li><i class="fas fa-check"></i> 3 Social Platforms</li>
+                        <li><i class="fas fa-check"></i> Priority Delivery</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Select Plan</a>
                 </div>
-                <div class="nav-item">
-                    <i class="fas fa-calendar-alt"></i>
-                    <span>Content Planner</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-hashtag"></i>
-                    <span>Hashtag Research</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-users"></i>
-                    <span>Audience Insights</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-bell"></i>
-                    <span>Notifications</span>
-                </div>
-                <div class="nav-item">
-                    <i class="fas fa-cog"></i>
-                    <span>Settings</span>
+                <div class="pricing-card">
+                    <h3>Business</h3>
+                    <div class="price">$49.99<span>/month</span></div>
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> 10,000 Followers</li>
+                        <li><i class="fas fa-check"></i> 25,000 Likes</li>
+                        <li><i class="fas fa-check"></i> 24/7 Support</li>
+                        <li><i class="fas fa-check"></i> All Social Platforms</li>
+                        <li><i class="fas fa-check"></i> Priority Delivery</li>
+                    </ul>
+                    <a href="#" class="btn btn-outline">Select Plan</a>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="main-content">
-                <div class="profile-section">
-                    <div class="profile-header">
-                        <div class="profile-info">
-                            <div class="profile-avatar">
-                                <i class="fab fa-instagram"></i>
-                            </div>
-                            <div class="profile-details">
-                                <h2>@creative_mind</h2>
-                                <p>Digital Creator • Photography • Art</p>
-                            </div>
-                        </div>
-                        <div class="platform-tabs">
-                            <div class="platform-tab active">Instagram</div>
-                            <div class="platform-tab">Twitter</div>
-                            <div class="platform-tab">TikTok</div>
-                            <div class="platform-tab">YouTube</div>
-                        </div>
+    <!-- How It Works Section -->
+    <section class="section" id="how-it-works">
+        <div class="container">
+            <div class="section-header">
+                <h2>How It Works</h2>
+                <p>Getting started with our service is quick and easy</p>
+            </div>
+            <div class="steps-container">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Select Service</h3>
+                    <p>Choose the social media platform and service you want to boost</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Provide Details</h3>
+                    <p>Enter your account details and the quantity you want to purchase</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Make Payment</h3>
+                    <p>Complete the secure payment process using your preferred method</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>See Results</h3>
+                    <p>Watch as your followers, likes, or views start increasing rapidly</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Clients Say</h2>
+                <p>Don't just take our word for it - hear from some of our satisfied customers</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "I was skeptical at first, but SocialBoost Pro delivered exactly what they promised. My Instagram following grew by 2,000 real followers in just one week!"
                     </div>
-
-                    <div class="stats-grid">
-                        <div class="stat-card">
-                            <div class="stat-header">
-                                <h3>Followers</h3>
-                                <div class="stat-icon icon-followers">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                            </div>
-                            <div class="stat-value">24.8K</div>
-                            <div class="stat-change positive">
-                                <i class="fas fa-arrow-up"></i>
-                                <span>12.4% from last month</span>
-                            </div>
-                        </div>
-
-                        <div class="stat-card">
-                            <div class="stat-header">
-                                <h3>Engagement Rate</h3>
-                                <div class="stat-icon icon-engagement">
-                                    <i class="fas fa-heart"></i>
-                                </div>
-                            </div>
-                            <div class="stat-value">4.7%</div>
-                            <div class="stat-change positive">
-                                <i class="fas fa-arrow-up"></i>
-                                <span>2.1% from last month</span>
-                            </div>
-                        </div>
-
-                        <div class="stat-card">
-                            <div class="stat-header">
-                                <h3>Reach</h3>
-                                <div class="stat-icon icon-reach">
-                                    <i class="fas fa-eye"></i>
-                                </div>
-                            </div>
-                            <div class="stat-value">148.5K</div>
-                            <div class="stat-change positive">
-                                <i class="fas fa-arrow-up"></i>
-                                <span>8.3% from last month</span>
-                            </div>
-                        </div>
-
-                        <div class="stat-card">
-                            <div class="stat-header">
-                                <h3>Posts</h3>
-                                <div class="stat-icon icon-posts">
-                                    <i class="fas fa-image"></i>
-                                </div>
-                            </div>
-                            <div class="stat-value">247</div>
-                            <div class="stat-change">
-                                <span>Last 30 days: 18</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="charts-grid">
-                        <div class="chart-card">
-                            <div class="chart-header">
-                                <h3>Follower Growth</h3>
-                                <div>
-                                    <select style="padding: 8px 15px; border-radius: 8px; border: 1px solid #ddd;">
-                                        <option>Last 7 days</option>
-                                        <option>Last 30 days</option>
-                                        <option>Last 3 months</option>
-                                        <option>Last year</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="chart-container">
-                                <canvas id="growthChart"></canvas>
-                            </div>
-                        </div>
-
-                        <div class="chart-card">
-                            <div class="chart-header">
-                                <h3>Audience Demographics</h3>
-                            </div>
-                            <div class="chart-container">
-                                <canvas id="demographicsChart"></canvas>
-                            </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SM</div>
+                        <div class="author-info">
+                            <h4>Sarah Mitchell</h4>
+                            <p>Influencer</p>
                         </div>
                     </div>
                 </div>
-
-                <div class="insights-grid">
-                    <div class="insight-card">
-                        <div class="insight-header">
-                            <div class="insight-icon">
-                                <i class="fas fa-hashtag"></i>
-                            </div>
-                            <h3>Top Performing Hashtags</h3>
-                        </div>
-                        <div class="hashtag-list">
-                            <div class="hashtag-item">
-                                <div class="hashtag-name">#photography</div>
-                                <div class="hashtag-count">24.5K reaches</div>
-                            </div>
-                            <div class="hashtag-item">
-                                <div class="hashtag-name">#creative</div>
-                                <div class="hashtag-count">18.7K reaches</div>
-                            </div>
-                            <div class="hashtag-item">
-                                <div class="hashtag-name">#art</div>
-                                <div class="hashtag-count">15.2K reaches</div>
-                            </div>
-                            <div class="hashtag-item">
-                                <div class="hashtag-name">#design</div>
-                                <div class="hashtag-count">12.8K reaches</div>
-                            </div>
-                            <div class="hashtag-item">
-                                <div class="hashtag-name">#inspiration</div>
-                                <div class="hashtag-count">9.4K reaches</div>
-                            </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "As a small business owner, social media presence is crucial. Thanks to SocialBoost Pro, my engagement has skyrocketed and I'm reaching more customers than ever."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">JR</div>
+                        <div class="author-info">
+                            <h4>James Rodriguez</h4>
+                            <p>Business Owner</p>
                         </div>
                     </div>
-
-                    <div class="insight-card">
-                        <div class="insight-header">
-                            <div class="insight-icon">
-                                <i class="fas fa-clock"></i>
-                            </div>
-                            <h3>Best Times to Post</h3>
-                        </div>
-                        <div class="time-list">
-                            <div class="time-item">
-                                <div class="time-slot">
-                                    <span>Monday 7-9 PM</span>
-                                    <span>High Engagement</span>
-                                </div>
-                                <div class="time-bar">
-                                    <div class="time-fill" style="width: 92%"></div>
-                                </div>
-                            </div>
-                            <div class="time-item">
-                                <div class="time-slot">
-                                    <span>Wednesday 12-2 PM</span>
-                                    <span>Medium Engagement</span>
-                                </div>
-                                <div class="time-bar">
-                                    <div class="time-fill" style="width: 75%"></div>
-                                </div>
-                            </div>
-                            <div class="time-item">
-                                <div class="time-slot">
-                                    <span>Friday 5-7 PM</span>
-                                    <span>High Engagement</span>
-                                </div>
-                                <div class="time-bar">
-                                    <div class="time-fill" style="width: 88%"></div>
-                                </div>
-                            </div>
-                            <div class="time-item">
-                                <div class="time-slot">
-                                    <span>Sunday 3-5 PM</span>
-                                    <span>Medium Engagement</span>
-                                </div>
-                                <div class="time-bar">
-                                    <div class="time-fill" style="width: 68%"></div>
-                                </div>
-                            </div>
-                        </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-text">
+                        "The TikTok promotion service helped my videos go viral. I gained 10,000 followers in a month and now brands are reaching out to me for collaborations!"
                     </div>
-
-                    <div class="insight-card">
-                        <div class="insight-header">
-                            <div class="insight-icon">
-                                <i class="fas fa-lightbulb"></i>
-                            </div>
-                            <h3>Content Suggestions</h3>
-                        </div>
-                        <div class="content-suggestions">
-                            <div class="suggestion-item">
-                                <div class="suggestion-icon">
-                                    <i class="fas fa-palette"></i>
-                                </div>
-                                <div>
-                                    <h4>Create a color theory tutorial</h4>
-                                    <p>Your audience engages well with educational content</p>
-                                </div>
-                            </div>
-                            <div class="suggestion-item">
-                                <div class="suggestion-icon">
-                                    <i class="fas fa-question"></i>
-                                </div>
-                                <div>
-                                    <h4>Q&A session</h4>
-                                    <p>Boost engagement with interactive content</p>
-                                </div>
-                            </div>
-                            <div class="suggestion-item">
-                                <div class="suggestion-icon">
-                                    <i class="fas fa-video"></i>
-                                </div>
-                                <div>
-                                    <h4>Behind the scenes reel</h4>
-                                    <p>Your followers love seeing your creative process</p>
-                                </div>
-                            </div>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">AP</div>
+                        <div class="author-info">
+                            <h4>Alexis Parker</h4>
+                            <p>Content Creator</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- FAQ Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Frequently Asked Questions</h2>
+                <p>Find answers to the most common questions about our services</p>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Are the followers real people?</span>
+                        <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we provide real followers from active social media users. We do not use bots or fake accounts to inflate your numbers.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>How quickly will I see results?</span>
+                        <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Most clients start seeing results within a few hours of placing an order, with the full delivery typically completed within 24-72 hours depending on the service and quantity.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Is my account safe?</span>
+                        <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Absolutely. We use secure methods that comply with all platform terms of service. Your account security is our top priority.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>What payment methods do you accept?</span>
+                        <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We accept all major credit cards, PayPal, and various cryptocurrencies for your convenience.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>Do you offer refunds?</span>
+                        <div class="faq-toggle"><i class="fas fa-chevron-down"></i></div>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We offer a satisfaction guarantee. If you're not happy with our service, we provide refunds according to our refund policy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>SocialBoost Pro</h3>
+                    <p>Helping individuals and businesses grow their social media presence since 2020.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="#">Instagram Growth</a></li>
+                        <li><a href="#">TikTok Promotion</a></li>
+                        <li><a href="#">YouTube Growth</a></li>
+                        <li><a href="#">Twitter Boost</a></li>
+                        <li><a href="#">Facebook Likes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Affiliate Program</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 SocialBoost Pro. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Initialize charts
-        document.addEventListener('DOMContentLoaded', function() {
-            // Growth Chart
-            const growthCtx = document.getElementById('growthChart').getContext('2d');
-            const growthChart = new Chart(growthCtx, {
-                type: 'line',
-                data: {
-                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'],
-                    datasets: [{
-                        label: 'Followers',
-                        data: [16500, 17800, 19200, 20500, 21800, 23000, 24800],
-                        borderColor: '#4361ee',
-                        backgroundColor: 'rgba(67, 97, 238, 0.1)',
-                        borderWidth: 3,
-                        fill: true,
-                        tension: 0.4
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            display: false
-                        }
-                    },
-                    scales: {
-                        y: {
-                            beginAtZero: false,
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.05)'
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false
-                            }
-                        }
-                    }
-                }
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const item = question.parentNode;
+                item.classList.toggle('active');
             });
+        });
 
-            // Demographics Chart
-            const demographicsCtx = document.getElementById('demographicsChart').getContext('2d');
-            const demographicsChart = new Chart(demographicsCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['18-24', '25-34', '35-44', '45+'],
-                    datasets: [{
-                        data: [35, 40, 15, 10],
-                        backgroundColor: [
-                            '#4361ee',
-                            '#3a0ca3',
-                            '#4cc9f0',
-                            '#f72585'
-                        ],
-                        borderWidth: 0
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'bottom'
-                        }
-                    }
-                }
-            });
-
-            // Platform tabs functionality
-            const platformTabs = document.querySelectorAll('.platform-tab');
-            platformTabs.forEach(tab => {
-                tab.addEventListener('click', function() {
-                    platformTabs.forEach(t => t.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // In a real app, this would update the dashboard data
-                    // based on the selected platform
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
                 });
             });
+        });
 
-            // Navigation items functionality
-            const navItems = document.querySelectorAll('.nav-item');
-            navItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    navItems.forEach(i => i.classList.remove('active'));
-                    this.classList.add('active');
-                });
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
             });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.service-card, .pricing-card, .step, .testimonial-card').forEach(el => {
+            el.style.opacity = 0;
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(el);
         });
     </script>
 </body>
